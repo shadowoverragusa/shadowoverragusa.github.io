@@ -22,11 +22,12 @@
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.03) saturate(1.02); }
   .overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0)); }
   .hero .content { position:relative; z-index:2; color:#fff; padding:24px; }
+  .tagline { opacity:.88; font-size:1.02rem; }
   .grid { display:grid; grid-template-columns:1fr; gap:18px; }
-  @media (min-width:900px){ .grid.synopsis { grid-template-columns:320px 1fr; gap:22px; } .grid.about { grid-template-columns:1.1fr 1fr; gap:22px; } }
+  @media (min-width:900px){ .grid.synopsis { grid-template-columns:360px 1fr; gap:24px; } .grid.about { grid-template-columns:1.05fr 1fr; gap:22px; } }
   .card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
-  .frame { border:1px solid var(--border); border-radius:18px; background:#0d111a; padding:10px; }
-  .book-cover { width:100%; height:auto; display:block; object-fit:contain; } /* FULL image, no crop */
+  .frame { border:1px solid var(--border); border-radius:18px; background:#0d111a; padding:12px; display:flex; align-items:center; justify-content:center; }
+  .book-cover { width:100%; height:auto; max-height:72vh; object-fit:contain; } /* FULL image visible */
   .author-box { width:100%; max-width: 420px; height: 540px; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#0e131d; display:flex; align-items:center; justify-content:center; margin:auto; }
   .author-box img { width:100%; height:100%; object-fit:cover; }
   .muted { color:var(--muted); }
@@ -61,7 +62,7 @@
   <div class="overlay"></div>
   <div class="content container">
     <h1 style="font-size:clamp(2rem,5vw,3.2rem); letter-spacing:.2px;">Shadow over Ragusa</h1>
-    <!-- Tagline removed per request -->
+    <p class="tagline">A historical novel about the Republic of Ragusa — how pure love endures under trial.</p>
   </div>
 </section>
 
