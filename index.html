@@ -22,11 +22,11 @@
   .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.03) saturate(1.02); }
   .overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0)); }
   .hero .content { position:relative; z-index:2; color:#fff; padding:24px; }
-  .tagline { opacity:.85; font-size:1.05rem; }
   .grid { display:grid; grid-template-columns:1fr; gap:18px; }
   @media (min-width:900px){ .grid.synopsis { grid-template-columns:320px 1fr; gap:22px; } .grid.about { grid-template-columns:1.1fr 1fr; gap:22px; } }
   .card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
-  .frame { border:1px solid var(--border); border-radius:18px; overflow:hidden; background:#0d111a; }
+  .frame { border:1px solid var(--border); border-radius:18px; background:#0d111a; padding:10px; }
+  .book-cover { width:100%; height:auto; display:block; object-fit:contain; } /* FULL image, no crop */
   .author-box { width:100%; max-width: 420px; height: 540px; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#0e131d; display:flex; align-items:center; justify-content:center; margin:auto; }
   .author-box img { width:100%; height:100%; object-fit:cover; }
   .muted { color:var(--muted); }
@@ -61,7 +61,7 @@
   <div class="overlay"></div>
   <div class="content container">
     <h1 style="font-size:clamp(2rem,5vw,3.2rem); letter-spacing:.2px;">Shadow over Ragusa</h1>
-    <p class="tagline">A historical novel of Dubrovnik—love, loyalty, and a city under threat</p>
+    <!-- Tagline removed per request -->
   </div>
 </section>
 
@@ -69,7 +69,7 @@
   <div class="container">
     <h2>Synopsis</h2>
     <div class="grid synopsis">
-      <div class="frame"><img id="synopsisCover" alt="Book Cover (front)"></div>
+      <div class="frame"><img id="synopsisCover" class="book-cover" alt="Book Cover (front)"></div>
       <div class="card" style="white-space:pre-wrap;">Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin—seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
 The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern‑lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red‑cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear‑eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
