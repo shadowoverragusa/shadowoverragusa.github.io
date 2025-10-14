@@ -27,7 +27,7 @@
   @media (min-width:900px){ .grid.synopsis { grid-template-columns:360px 1fr; gap:24px; } .grid.about { grid-template-columns:1.05fr 1fr; gap:22px; } }
   .card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
   .frame { border:1px solid var(--border); border-radius:18px; background:#0d111a; padding:12px; display:flex; align-items:center; justify-content:center; }
-  .book-cover { width:100%; height:auto; max-height:72vh; object-fit:contain; } /* FULL image visible */
+  .book-cover { width:100%; height:auto; max-height:72vh; object-fit:contain; }
   .author-box { width:100%; max-width: 420px; height: 540px; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#0e131d; display:flex; align-items:center; justify-content:center; margin:auto; }
   .author-box img { width:100%; height:100%; object-fit:cover; }
   .muted { color:var(--muted); }
@@ -36,10 +36,12 @@
   .thumb { aspect-ratio: 4/3; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#101521; }
   .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
   .footer { border-top:1px solid var(--border); color: var(--muted); font-size: 14px; padding: 28px 0; }
-  .contact { display:flex; flex-direction:column; gap:12px; }
-  .contact input, .contact textarea { width:100%; background:#0f1420; color:var(--fg); border:1px solid var(--border); border-radius:12px; padding:12px; }
-  .contact button { background:var(--accent); color:#0b0d12; border:0; border-radius:12px; padding:12px 16px; cursor:pointer; font-weight:600; }
-  .note { font-size:12px; color:var(--muted); }
+  /* Edit mode */
+  #editBar { position: fixed; bottom: 18px; right: 18px; background: var(--card); border:1px solid var(--border); border-radius: 14px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.35); display:none; gap:8px; }
+  #editorPanel { position: fixed; inset: 0; background: rgba(0,0,0,.6); display:none; align-items: center; justify-content: center; padding: 16px; }
+  #editorCard { width: min(940px, 96vw); max-height: 90vh; overflow: auto; background: var(--card); border:1px solid var(--border); border-radius: 16px; padding: 16px; }
+  #editorCard h3 { margin: 6px 0 10px; }
+  .ta { width:100%; min-height: 150px; background:#0f1420; color:var(--fg); border:1px solid var(--border); border-radius:12px; padding:12px; white-space:pre-wrap; }
 </style>
 </head>
 <body>
@@ -71,13 +73,13 @@
     <h2>Synopsis</h2>
     <div class="grid synopsis">
       <div class="frame"><img id="synopsisCover" class="book-cover" alt="Book Cover (front)"></div>
-      <div class="card" style="white-space:pre-wrap;">Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin—seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
+      <div class="card" id="synopsisText" style="white-space:pre-wrap;">Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
-The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern‑lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red‑cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear‑eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
+The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear-eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
 
 Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue—and the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
 
-Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun‑struck rooftops, the novel celebrates a city that survives by wit over force—and the people whose private loyalties make public liberty possible.</div>
+Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun-struck rooftops, the novel celebrates a city that survives by wit over force—and the people whose private loyalties make public liberty possible.</div>
     </div>
   </div>
 </section>
@@ -92,7 +94,7 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
         </div>
         <p id="authorHint" class="muted" style="text-align:center; margin-top:8px; display:none;">Tip: upload <code>author.jpg</code> (or .png) to the repo root.</p>
       </div>
-      <div class="card" style="white-space:pre-wrap;">Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books—shaped by memory, rumor, and place—sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front‑row seat to temperaments and relationships that later inspired characters. What started as a light, just‑for‑fun idea grew into a full‑length historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth.</div>
+      <div class="card" id="bioText" style="white-space:pre-wrap;">Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books shaped by memory, rumor, and place sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front row seat to temperaments and relationships that later inspired characters. What started as a light, just-for-fun idea grew into a full-length historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth.</div>
     </div>
   </div>
 </section>
@@ -135,6 +137,24 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
     <div>Built with ♥ — static site</div>
   </div>
 </footer>
+
+<!-- Edit UI -->
+<div id="editBar">
+  <button class="btn" id="openEditor">Edit text</button>
+</div>
+<div id="editorPanel">
+  <div id="editorCard">
+    <h3>Synopsis</h3>
+    <textarea class="ta" id="synopsisTA"></textarea>
+    <h3 style="margin-top:14px;">Bio</h3>
+    <textarea class="ta" id="bioTA"></textarea>
+    <div style="display:flex; gap:8px; margin-top:12px;">
+      <button class="btn" id="applyAndDownload">Apply &amp; Download updated index.html</button>
+      <button class="btn ghost" id="closeEditor">Close</button>
+    </div>
+    <p class="muted" style="margin-top:8px;">Tip: Press <strong>Shift+E</strong> to toggle edit mode anytime.</p>
+  </div>
+</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -180,6 +200,51 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   const sendBtn = document.getElementById('sendBtn');
   const note = document.getElementById('contactNote');
   if (!form.action.includes('/f/yourid')) { sendBtn.disabled = false; note.textContent = 'Form is active.'; }
+
+  // --- Edit Mode ---
+  const editBar = document.getElementById('editBar');
+  const editorPanel = document.getElementById('editorPanel');
+  const openEditor = document.getElementById('openEditor');
+  const closeEditor = document.getElementById('closeEditor');
+  const synopsisEl = document.getElementById('synopsisText');
+  const bioEl = document.getElementById('bioText');
+  const synopsisTA = document.getElementById('synopsisTA');
+  const bioTA = document.getElementById('bioTA');
+  const applyBtn = document.getElementById('applyAndDownload');
+
+  function toggleEdit(show) {
+    editorPanel.style.display = show ? 'flex' : 'none';
+  }
+
+  function enableEditUI() {
+    editBar.style.display = 'flex';
+    // preload text
+    synopsisTA.value = synopsisEl.textContent;
+    bioTA.value = bioEl.textContent;
+  }
+
+  function downloadUpdatedFile() {
+    const serializer = new XMLSerializer();
+    const docClone = document.documentElement.cloneNode(true);
+    docClone.querySelector('#synopsisText').textContent = synopsisTA.value;
+    docClone.querySelector('#bioText').textContent = bioTA.value;
+    const htmlText = '<!doctype html>\n' + serializer.serializeToString(docClone);
+    const blob = new Blob([htmlText], {type: 'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+
+  openEditor.addEventListener('click', () => toggleEdit(true));
+  closeEditor.addEventListener('click', () => toggleEdit(false));
+  applyBtn.addEventListener('click', (e) => { e.preventDefault(); synopsisEl.textContent = synopsisTA.value; bioEl.textContent = bioTA.value; downloadUpdatedFile(); toggleEdit(false); });
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('edit') === '1') enableEditUI();
+  window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase() === 'e') enableEditUI(); });
 </script>
 
 </body>
