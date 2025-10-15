@@ -23,7 +23,6 @@
   section{padding:46px 0} .grid{display:grid;grid-template-columns:1fr;gap:20px}
   @media (min-width:900px){ .grid.synopsis{grid-template-columns:340px 1fr;gap:26px} .grid.about{grid-template-columns:1.05fr 1fr;gap:26px} }
   .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25)}
-  /* Tight frame for cover: no padding; shrink to image */
   #synopsis .frame{display:inline-block;padding:0;margin:0 auto;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.25);line-height:0}
   .book-cover{display:block;width:auto;height:auto;max-width:100%;max-height:65vh;object-fit:contain}
   .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
@@ -31,20 +30,15 @@
   .author-box{width:100%;max-width:460px;height:580px;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,.02);display:flex;align-items:center;justify-content:center;margin:auto;box-shadow:0 12px 32px rgba(0,0,0,.25)}
   .author-box .inner{position:relative;width:100%;height:100%} .author-box .inner::after{content:'';position:absolute;inset:8px;border-radius:14px;border:1px solid rgba(214,185,128,.6)}
   .author-box img{width:100%;height:100%;object-fit:cover}
-  /* Highlights cards */
-  .hl-grid{display:grid;grid-template-columns:1fr;gap:16px}
-  @media (min-width:900px){ .hl-grid{grid-template-columns:1fr 1fr} }
+  .hl-grid{display:grid;grid-template-columns:1fr;gap:16px} @media (min-width:900px){ .hl-grid{grid-template-columns:1fr 1fr} }
   .hl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 28px rgba(0,0,0,.25)}
-  .hl-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-  .hl-icon{font-size:20px} .hl-title{font-family:'Playfair Display',serif;font-size:1.1rem}
-  .hl-list{margin:8px 0 0 0;padding-left:18px}
-  .hl-list li{margin:4px 0}
+  .hl-head{display:flex;align-items:center;gap:10px;margin-bottom:8px} .hl-icon{font-size:20px} .hl-title{font-family:'Playfair Display',serif;font-size:1.1rem}
+  .hl-list{margin:8px 0 0 0;padding-left:18px} .hl-list li{margin:4px 0}
   .hint{font-size:12px;color:var(--muted)}
   #galleryOverlay{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:55;overflow:auto}
   #galleryOverlay .wrap{max-width:1200px;margin:0 auto;padding:20px}
   #galleryOverlay .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-  #galleryOverlay .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  @media (min-width:900px){ #galleryOverlay .grid{grid-template-columns:repeat(4,1fr)} }
+  #galleryOverlay .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px} @media (min-width:900px){ #galleryOverlay .grid{grid-template-columns:repeat(4,1fr)} }
   .thumb{aspect-ratio:4/3;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101521;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
   .thumb:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.35)} .thumb img{width:100%;height:100%;object-fit:cover;display:block}
   .count{font-size:12px;color:#c9ced8}
@@ -62,17 +56,6 @@
   #editorPanel{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:70}
   #editorCard{width:min(960px,96vw);max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
   #editorCard h3{margin:6px 0 10px} .ta{width:100%;min-height:150px;background:rgba(255,255,255,.03);color:var(--fg);border:1px solid var(--border);border-radius:12px;padding:12px;white-space:pre-wrap}
-  /* Admin */
-  #adminBtn{position:fixed;bottom:18px;left:18px;z-index:80;opacity:.35} #adminBtn:hover{opacity:1}
-  #adminPanel{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;z-index:90;align-items:center;justify-content:center;padding:16px}
-  #adminCard{width:min(980px,96vw);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
-  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  .field{display:flex;flex-direction:column;gap:6px;min-width:220px;flex:1}
-  .field input[type=text], .field input[type=password]{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--fg);border-radius:10px;padding:10px}
-  #drop{border:2px dashed var(--border);border-radius:14px;padding:18px;text-align:center;opacity:.9}
-  #list{margin-top:10px;font-size:14px;max-height:200px;overflow:auto;opacity:.85}
-  .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:6px 10px;margin:4px;background:rgba(255,255,255,.04)}
-  .ok{color:#71e6a0} .warn{color:#f6c05e} .err{color:#ff8a8a}
 </style>
 </head>
 <body>
@@ -109,7 +92,13 @@
         </div>
         <div class="caption">Front cover — upload as <code>cover.jpg</code> (or <code>cover.png</code>) to the repo root.</div>
       </div>
-      <div class="card" id="synopsisText" style="white-space:pre-wrap;">Use edit mode (Shift+E) to paste your synopsis here.</div>
+      <div class="card" id="synopsisText" style="white-space:pre-wrap;">Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
+
+The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear-eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
+
+Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue—and the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
+
+Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun-struck rooftops, the novel celebrates a city that survives by wit over force—and the people whose private loyalties make public liberty possible.</div>
     </div>
   </div>
 </section>
@@ -118,78 +107,14 @@
   <div class="container">
     <h2>Highlights — Why this book is special</h2>
     <div class="hl-grid">
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div>
-        <ul class="hl-list">
-          <li>A small but powerful maritime republic.</li>
-          <li>Diplomacy and survival between Venice and the Ottoman Empire.</li>
-          <li>Architecture, customs, salt trade, and noble families.</li>
-          <li>Fresh, untold ground—rare and captivating.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">A Love Story of Loyalty, Courage &amp; Sacrifice</div></div>
-        <ul class="hl-list">
-          <li>Pure and true—not forbidden or scandalous.</li>
-          <li>Tested by war, faith, distance, and politics.</li>
-          <li>A force that changes the destiny of their world.</li>
-          <li>Human, noble, and timeless.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">A Strong, Intelligent Female Lead</div></div>
-        <ul class="hl-list">
-          <li>Iva is brave, clever, principled, and emotionally deep.</li>
-          <li>Not royalty, yet central to history.</li>
-          <li>Takes action rather than waiting to be saved.</li>
-          <li>A heroine readers admire and love.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">⚔</span><div class="hl-title">Epic Stakes with Human Hearts</div></div>
-        <ul class="hl-list">
-          <li>Love and devotion amid political tension and espionage.</li>
-          <li>War, betrayal, faith, and survival.</li>
-          <li>Diplomacy instead of conquest.</li>
-          <li>Cinematic yet intimate.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">🌍</span><div class="hl-title">Coexistence &amp; Cultural Respect</div></div>
-        <ul class="hl-list">
-          <li>East and West finding understanding.</li>
-          <li>Conversion as sacrifice for peace—not loss of identity.</li>
-          <li>Love transcending culture, language, and empire.</li>
-          <li>Timely and universal.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">🏰</span><div class="hl-title">Rich Worldbuilding &amp; Atmosphere</div></div>
-        <ul class="hl-list">
-          <li>Stone streets, villas, palaces, and ports.</li>
-          <li>Constantinople’s courts and mosques.</li>
-          <li>Life inside noble households.</li>
-          <li>Islands, markets, ships, and council halls.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">🎭</span><div class="hl-title">Many Compelling Characters</div></div>
-        <ul class="hl-list">
-          <li>Luka and Lady Ana’s romance.</li>
-          <li>Venetian spies disguised as priests.</li>
-          <li>Noble families and servants with real roles.</li>
-          <li>Lords Ivano and Vjeko making impossible decisions.</li>
-        </ul>
-      </div>
-      <div class="hl-card">
-        <div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, and Legacy</div></div>
-        <ul class="hl-list">
-          <li>Peace instead of tragedy.</li>
-          <li>Preservation of independence.</li>
-          <li>Love rewarded after sacrifice.</li>
-          <li>Humanity can triumph over empire.</li>
-        </ul>
-      </div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div><ul class="hl-list"><li>A small but powerful maritime republic.</li><li>Diplomacy and survival between Venice and the Ottoman Empire.</li><li>Architecture, customs, salt trade, and noble families.</li><li>Fresh, untold ground—rare and captivating.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">A Love Story of Loyalty, Courage &amp; Sacrifice</div></div><ul class="hl-list"><li>Pure and true—not forbidden or scandalous.</li><li>Tested by war, faith, distance, and politics.</li><li>A force that changes the destiny of their world.</li><li>Human, noble, and timeless.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">A Strong, Intelligent Female Lead</div></div><ul class="hl-list"><li>Iva is brave, clever, principled, and emotionally deep.</li><li>Not royalty, yet central to history.</li><li>Takes action rather than waiting to be saved.</li><li>A heroine readers admire and love.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">⚔</span><div class="hl-title">Epic Stakes with Human Hearts</div></div><ul class="hl-list"><li>Love and devotion amid political tension and espionage.</li><li>War, betrayal, faith, and survival.</li><li>Diplomacy instead of conquest.</li><li>Cinematic yet intimate.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🌍</span><div class="hl-title">Coexistence &amp; Cultural Respect</div></div><ul class="hl-list"><li>East and West finding understanding.</li><li>Conversion as sacrifice for peace—not loss of identity.</li><li>Love transcending culture, language, and empire.</li><li>Timely and universal.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏰</span><div class="hl-title">Rich Worldbuilding &amp; Atmosphere</div></div><ul class="hl-list"><li>Stone streets, villas, palaces, and ports.</li><li>Constantinople’s courts and mosques.</li><li>Life inside noble households.</li><li>Islands, markets, ships, and council halls.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🎭</span><div class="hl-title">Many Compelling Characters</div></div><ul class="hl-list"><li>Luka and Lady Ana’s romance.</li><li>Venetian spies disguised as priests.</li><li>Noble families and servants with real roles.</li><li>Lords Ivano and Vjeko making impossible decisions.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, and Legacy</div></div><ul class="hl-list"><li>Peace instead of tragedy.</li><li>Preservation of independence.</li><li>Love rewarded after sacrifice.</li><li>Humanity can triumph over empire.</li></ul></div>
     </div>
   </div>
 </section>
@@ -202,7 +127,7 @@
         <div class="author-box"><div class="inner"><img id="authorImg" alt="Author photo"></div></div>
         <p id="authorHint" class="caption" style="display:none;">Upload <code>author.jpg</code> (or <code>.png</code>) to the repo root.</p>
       </div>
-      <div class="card" id="bioText" style="white-space:pre-wrap;">Use edit mode (Shift+E) to paste your bio here.</div>
+      <div class="card" id="bioText" style="white-space:pre-wrap;">Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books shaped by memory, rumor, and place sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front row seat to temperaments and relationships that later inspired characters. What started as a light, just-for-fun idea grew into a full-length historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth.</div>
     </div>
   </div>
 </section>
@@ -267,41 +192,6 @@
   <button class="prev" aria-label="Previous">‹</button>
   <img alt="Gallery image">
   <button class="next" aria-label="Next">›</button>
-</div>
-
-<div id="editBar" style="display:none"><button class="btn" id="openEditor">Edit text</button></div>
-<div id="editorPanel" style="display:none">
-  <div id="editorCard">
-    <h3>Synopsis</h3>
-    <textarea class="ta" id="synopsisTA"></textarea>
-    <h3 style="margin-top:14px;">Bio</h3>
-    <textarea class="ta" id="bioTA"></textarea>
-    <div style="display:flex;gap:8px;margin-top:12px;">
-      <button class="btn primary" id="applyAndDownload">Apply &amp; Download updated index.html</button>
-      <button class="btn ghost" id="closeEditor">Close</button>
-    </div>
-    <p class="note" style="margin-top:8px;">Press <strong>Shift+E</strong> to toggle edit mode (text only).</p>
-  </div>
-</div>
-
-<button id="adminBtn" class="btn">Admin</button>
-<div id="adminPanel">
-  <div id="adminCard">
-    <h2 style="margin:4px 0 12px;">Admin — Upload to Gallery</h2>
-    <div class="row">
-      <div class="field"><label>GitHub Token (fine‑grained, contents:read/write)</label><input type="password" id="ghToken" placeholder="Paste your GitHub token"></div>
-      <div class="field"><label>Auto‑rename</label><label class="row" style="gap:6px;"><input type="checkbox" id="autoRename" checked> <span>Rename to <code>gallery-N.ext</code></span></label></div>
-      <div class="field"><label>Folder (optional)</label><input type="text" id="folder" placeholder="e.g. images"></div>
-    </div>
-    <div id="drop">Drop images here or <input type="file" id="fileInput" multiple accept="image/*"></div>
-    <div id="list"></div>
-    <div class="row" style="margin-top:12px;">
-      <button class="btn primary" id="uploadBtn">Upload</button>
-      <button class="btn ghost" id="adminClose">Close</button>
-      <span id="status" class="pill">Waiting…</span>
-    </div>
-    <p class="note" style="margin-top:10px;">Security: your token is used only from your browser to talk to GitHub’s API and isn’t stored.</p>
-  </div>
 </div>
 
 <script>
@@ -389,108 +279,6 @@
 
   // Contact
   document.getElementById('mailBtn').addEventListener('click', () => { location.href = 'mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa%20—%20Enquiry'; });
-
-  // Edit mode
-  const editBar = document.getElementById('editBar'); const editorPanel = document.getElementById('editorPanel');
-  const openEditor = document.getElementById('openEditor'); const closeEditor = document.getElementById('closeEditor');
-  const synopsisEl = document.getElementById('synopsisText'); const bioEl = document.getElementById('bioText');
-  const synopsisTA = document.getElementById('synopsisTA'); const bioTA = document.getElementById('bioTA');
-  const applyBtn = document.getElementById('applyAndDownload');
-  function toggleEdit(show){ editorPanel.style.display = show ? 'flex' : 'none'; }
-  function enableEditUI(){ editBar.style.display = 'flex'; synopsisTA.value = synopsisEl.textContent; bioTA.value = bioEl.textContent; }
-  function downloadUpdatedFile(){
-    const serializer = new XMLSerializer(); const docClone = document.documentElement.cloneNode(true);
-    docClone.querySelector('#synopsisText').textContent = synopsisTA.value;
-    docClone.querySelector('#bioText').textContent = bioTA.value;
-    const blob = new Blob(['<!doctype html>\n' + serializer.serializeToString(docClone)], {type:'text/html'});
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index.html'; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();}, 1000);
-  }
-  openEditor.addEventListener('click', () => toggleEdit(true)); closeEditor.addEventListener('click', () => toggleEdit(false));
-  applyBtn.addEventListener('click', (e) => { e.preventDefault(); synopsisEl.textContent = synopsisTA.value; bioEl.textContent = bioTA.value; downloadUpdatedFile(); toggleEdit(false); });
-  const params = new URLSearchParams(location.search);
-  if (params.get('edit') === '1') enableEditUI(); window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase()==='e') enableEditUI(); });
-
-  // Admin Upload
-  const ADMIN_KEY = "ragusa 1986";
-  const adminBtn = document.getElementById('adminBtn');
-  const adminPanel = document.getElementById('adminPanel');
-  const adminClose = document.getElementById('adminClose');
-  const ghToken = document.getElementById('ghToken');
-  const autoRename = document.getElementById('autoRename');
-  const folderInput = document.getElementById('folder');
-  const drop = document.getElementById('drop');
-  const fileInput = document.getElementById('fileInput');
-  const list = document.getElementById('list');
-  const uploadBtn = document.getElementById('uploadBtn');
-  const statusEl = document.getElementById('status');
-
-  let files = [];
-  function setStatus(t, cls=''){ statusEl.textContent = t; statusEl.className = 'pill ' + cls; }
-
-  function askPass(){ const p = prompt('Enter admin key:'); if (!p) return false; if (p.trim() === ADMIN_KEY) return true; alert('Wrong key'); return false; }
-  function openAdmin(){ adminPanel.style.display = 'flex'; }
-  function closeAdmin(){ adminPanel.style.display = 'none'; }
-
-  adminBtn.addEventListener('click', () => { if (askPass()) openAdmin(); });
-  window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase()==='u'){ if (askPass()) openAdmin(); }});
-  adminClose.addEventListener('click', closeAdmin);
-
-  function renderList(){ list.innerHTML = files.map(f => '<span class="pill">'+f.name+' ('+Math.round(f.size/1024)+' KB)</span>').join(''); }
-  fileInput.addEventListener('change', () => { files = Array.from(fileInput.files||[]); renderList(); });
-  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.style.opacity = 1; });
-  drop.addEventListener('dragleave', () => { drop.style.opacity = .9; });
-  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.style.opacity = .9; files = Array.from(e.dataTransfer.files||[]); renderList(); });
-
-  const OWNER = 'shadowoverragusa'; const REPO = 'shadowoverragusa.github.io'; const BRANCH = 'main';
-
-  function headers(token){ return { 'Authorization': 'token ' + token, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' }; }
-  async function getJSON(path, token){ const r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURIComponent(path)+'?ref='+BRANCH, { headers: headers(token) }); if (r.status===404) return null; if (!r.ok) throw new Error('GET '+path+' failed'); return await r.json(); }
-  async function putFile(path, base64, message, token, sha=null){ const body = { message, content: base64, branch: BRANCH }; if (sha) body.sha = sha;
-    const r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURIComponent(path), { method:'PUT', headers: headers(token), body: JSON.stringify(body) });
-    if (!r.ok) throw new Error('PUT '+path+' failed: '+r.status+' '+r.statusText); return await r.json();
-  }
-  async function listRoot(token){ const r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents?ref='+BRANCH, { headers: headers(token) }); if (!r.ok) throw new Error('List root failed'); return await r.json(); }
-
-  function toBase64(file){ return new Promise((resolve, reject) => { const fr = new FileReader(); fr.onload = () => { const b64 = btoa(String.fromCharCode(...new Uint8Array(fr.result))); resolve(b64); }; fr.onerror = reject; fr.readAsArrayBuffer(file); }); }
-
-  async function nextGalleryIndex(token){ try{ const items = await listRoot(token); const nums = items.map(it => it.name).map(n => (n.match(/^gallery-(\d+)\./)||[])[1]).filter(Boolean).map(s => parseInt(s,10)); const max = nums.length? Math.max(...nums):0; return max+1; }catch(e){ return 1; } }
-
-  uploadBtn.addEventListener('click', async () => { try{
-      if (!files.length) return alert('Choose images first');
-      const token = ghToken.value.trim(); if (!token) return alert('Paste your GitHub token');
-      setStatus('Uploading…', 'warn');
-
-      const folder = (folderInput.value||'').replace(/^\/+|\/+$/g, ''); // trim slashes
-      const prefix = folder ? folder+'/' : '';
-
-      let manifest = { images: [] }; let manifestSha = null;
-      try{ const js = await getJSON('gallery.json', token); if (js) { manifest = JSON.parse(atob(js.content)); manifestSha = js.sha; } }catch(e){}
-
-      let n = autoRename.checked ? await nextGalleryIndex(token) : null;
-      const added = [];
-
-      for (const file of files) {
-        const parts = file.name.split('.'); const ext = (parts.pop()||'jpg').toLowerCase();
-        const name = autoRename.checked ? ('gallery-' + (n++) + '.' + ext) : file.name;
-        const path = prefix + name;
-        const b64 = await toBase64(file);
-        await putFile(path, b64, 'Add image '+name+' via admin panel', token);
-        added.push(path);
-        setStatus('Uploaded '+name, 'ok');
-      }
-
-      manifest.images = (manifest.images||[]).concat(added);
-      const manifestB64 = btoa(unescape(encodeURIComponent(JSON.stringify(manifest, null, 2))));
-      await putFile('gallery.json', manifestB64, 'Update gallery.json', token, manifestSha);
-
-      setStatus('Done. '+added.length+' image(s) added.', 'ok');
-      alert('Upload complete. Refresh the page.');
-    }catch(e){
-      console.error(e); setStatus('Error: '+e.message, 'err'); alert(e.message);
-    }
-  });
-
-  if (new URLSearchParams(location.search).get('admin')==='1') { if (askPass()) openAdmin(); }
 </script>
 </body>
 </html>
