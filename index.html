@@ -1,54 +1,90 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="adriatic">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shadow over Ragusa — Mijo Radalj</title>
-<meta name="description" content="Shadow over Ragusa — a historical novel by Mijo Radalj.">
+<meta name="description" content="Shadow over Ragusa — a historical novel of Dubrovnik by Mijo Radalj.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='100%25' height='100%25' fill='%230b0d12'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23e6e8ee' font-family='serif' font-size='72'%3ESR%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Shadow over Ragusa — Mijo Radalj">
+<meta property="og:description" content="A historical novel about the Republic of Ragusa — how pure love endures under trial.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/cover.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0b0d12; --fg:#f3f5f7; --muted:#a7afbd; --card:#131722; --border:#262b36; --accent:#e6e8ee; }
-  * { box-sizing:border-box; }
-  html, body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-  h1, h2, h3 { font-family: 'Playfair Display', serif; margin:0 0 12px; }
-  a { color:inherit; text-decoration:none; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-  header.nav { position:sticky; top:0; z-index:10; background:rgba(11,13,18,.7); border-bottom:1px solid var(--border); backdrop-filter: blur(6px); }
-  header.nav .row { display:flex; align-items:center; gap:12px; padding: 10px 0; }
-  .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid var(--border); background:var(--card); color:var(--fg); cursor:pointer; }
-  .btn.ghost { background:transparent; }
-  section { padding: 44px 0; }
-  .hero { position:relative; height: 60vh; min-height: 360px; background: radial-gradient(80% 80% at 50% 20%, #1a2030, #0b0d12); display:flex; align-items:flex-end; }
-  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.03) saturate(1.02); }
-  .overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0)); }
-  .hero .content { position:relative; z-index:2; color:#fff; padding:24px; }
-  .tagline { opacity:.88; font-size:1.02rem; }
-  .grid { display:grid; grid-template-columns:1fr; gap:18px; }
-  @media (min-width:900px){ .grid.synopsis { grid-template-columns:360px 1fr; gap:24px; } .grid.about { grid-template-columns:1.05fr 1fr; gap:22px; } }
-  .card { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:20px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
-  .frame { border:1px solid var(--border); border-radius:18px; background:#0d111a; padding:12px; display:flex; align-items:center; justify-content:center; }
-  .book-cover { width:100%; height:auto; max-height:72vh; object-fit:contain; }
-  .author-box { width:100%; max-width: 420px; height: 540px; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#0e131d; display:flex; align-items:center; justify-content:center; margin:auto; }
-  .author-box img { width:100%; height:100%; object-fit:cover; }
-  .muted { color:var(--muted); }
-  .gallery { display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; }
-  @media (min-width:900px){ .gallery { grid-template-columns: repeat(4, 1fr); } }
-  .thumb { aspect-ratio: 4/3; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#101521; }
-  .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-  .footer { border-top:1px solid var(--border); color: var(--muted); font-size: 14px; padding: 28px 0; }
-  /* Edit mode */
-  #editBar { position: fixed; bottom: 18px; right: 18px; background: var(--card); border:1px solid var(--border); border-radius: 14px; padding: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.35); display:none; gap:8px; }
-  #editorPanel { position: fixed; inset: 0; background: rgba(0,0,0,.6); display:none; align-items: center; justify-content: center; padding: 16px; }
-  #editorCard { width: min(940px, 96vw); max-height: 90vh; overflow: auto; background: var(--card); border:1px solid var(--border); border-radius: 16px; padding: 16px; }
-  #editorCard h3 { margin: 6px 0 10px; }
-  .ta { width:100%; min-height: 150px; background:#0f1420; color:var(--fg); border:1px solid var(--border); border-radius:12px; padding:12px; white-space:pre-wrap; }
+  :root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#131722;--border:#262b36;--accent:#e6e8ee;--gold:#d6b980;}
+  html[data-theme="noir"]{--bg:#0b0b0b;--fg:#f2f2f2;--muted:#a8a8a8;--card:#141414;--border:#2a2a2a;--accent:#e7e7e7;--gold:#c9b37a;}
+  html[data-theme="ivory"]{--bg:#f7f5ef;--fg:#1d1f23;--muted:#5b6573;--card:#ffffff;--border:#e7e3d8;--accent:#1d1f23;--gold:#b59b5a;}
+
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  h1,h2,h3{font-family:'Playfair Display',serif;margin:0 0 12px;letter-spacing:.2px;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1100px;margin:0 auto;padding:0 16px;}
+
+  header.nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.35);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  header.nav .row{display:flex;align-items:center;gap:12px;padding:10px 0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--fg);cursor:pointer;transition:transform .2s ease, background .2s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:transparent;}
+
+  .hero{position:relative;height:min(68vh,720px);min-height:360px;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.02) brightness(.9) blur(2px);}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.05));}
+  .hero .content{position:relative;z-index:2;color:#fff;padding:24px;}
+  .tagline{opacity:.9;font-size:1.05rem;}
+
+  section{padding:46px 0;}
+  .grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  @media (min-width:900px){ .grid.synopsis{grid-template-columns:360px 1fr;gap:26px;} .grid.about{grid-template-columns:1.05fr 1fr;gap:26px;} }
+  .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 12px 36px rgba(0,0,0,.25);}
+  .frame{border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.02);padding:12px;display:flex;align-items:center;justify-content:center;box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);}
+  .book-cover{width:100%;height:auto;max-height:78vh;object-fit:contain;}
+  .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center;}
+
+  #synopsisText::first-letter{float:left;font-family:'Playfair Display',serif;font-size:3.2rem;line-height:0.8;color:var(--gold);padding:8px 10px 0 0;}
+
+  .author-box{width:100%;max-width:460px;height:580px;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,.02);display:flex;align-items:center;justify-content:center;margin:auto;box-shadow:0 12px 32px rgba(0,0,0,.25);}
+  .author-box .inner{position:relative;width:100%;height:100%;}
+  .author-box .inner::after{content:'';position:absolute;inset:8px;border-radius:14px;border:1px solid rgba(214,185,128,.6);}
+  .author-box img{width:100%;height:100%;object-fit:cover;}
+
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media (min-width:900px){ .gallery{grid-template-columns:repeat(4,1fr);} }
+  .thumb{aspect-ratio:4/3;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101521;cursor:pointer;transition:transform .2s ease;}
+  .thumb:hover{transform:translateY(-2px);}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;}
+  #lightbox img{max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
+  #lightbox .close{position:absolute;top:18px;right:20px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer;}
+  #lightbox .prev,#lightbox .next{position:absolute;top:50%;transform:translateY(-50%);font-size:32px;background:transparent;color:#fff;border:0;cursor:pointer;padding:10px 14px;}
+  #lightbox .prev{left:10px;} #lightbox .next{right:10px;}
+
+  .contact{display:flex;flex-direction:column;gap:12px;}
+  .contact input,.contact textarea{width:100%;background:rgba(255,255,255,.03);color:var(--fg);border:1px solid var(--border);border-radius:12px;padding:12px;}
+  .contact button{background:var(--accent);color:var(--bg);border:0;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:600;}
+  .note{font-size:12px;color:var(--muted);}
+
+  footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padding:28px 0;}
+
+  #editBar{position:fixed;bottom:18px;right:18px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);display:none;gap:8px;}
+  #editorPanel{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:60;}
+  #editorCard{width:min(960px,96vw);max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;}
+  #editorCard h3{margin:6px 0 10px;}
+  .ta{width:100%;min-height:150px;background:rgba(255,255,255,.03);color:var(--fg);border:1px solid var(--border);border-radius:12px;padding:12px;white-space:pre-wrap;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .5s ease .1s forwards;}
+    @keyframes fadeUp{to{opacity:1;transform:none;}}
+  }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="container row">
-    <strong style="font-family:'Playfair Display',serif; font-size:1.1rem;">Shadow over Ragusa</strong>
+    <strong style="font-family:'Playfair Display',serif;font-size:1.1rem;">Shadow over Ragusa</strong>
     <nav class="row" style="margin-left:auto;">
       <a class="btn ghost" href="#hero">Home</a>
       <a class="btn ghost" href="#synopsis">Synopsis</a>
@@ -60,57 +96,55 @@
 </header>
 
 <section id="hero" class="hero">
-  <img id="heroCover" alt="Book Cover">
-  <div class="overlay"></div>
-  <div class="content container">
-    <h1 style="font-size:clamp(2rem,5vw,3.2rem); letter-spacing:.2px;">Shadow over Ragusa</h1>
+  <div class="bg"><img id="heroCover" alt="Cover"></div>
+  <div class="veil"></div>
+  <div class="content container fade-up">
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem);">Shadow over Ragusa</h1>
     <p class="tagline">A historical novel about the Republic of Ragusa — how pure love endures under trial.</p>
   </div>
 </section>
 
 <section id="synopsis">
   <div class="container">
-    <h2>Synopsis</h2>
+    <h2 class="fade-up">Synopsis</h2>
     <div class="grid synopsis">
-      <div class="frame"><img id="synopsisCover" class="book-cover" alt="Book Cover (front)"></div>
-      <div class="card" id="synopsisText" style="white-space:pre-wrap;">Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
+      <div class="frame fade-up">
+        <img id="synopsisCover" class="book-cover" alt="Book Cover">
+      </div>
+      <div class="card fade-up" id="synopsisText" style="white-space:pre-wrap;">Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
-The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear-eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
+The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern‑lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red‑cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear‑eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
 
 Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue—and the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
 
-Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun-struck rooftops, the novel celebrates a city that survives by wit over force—and the people whose private loyalties make public liberty possible.</div>
+Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun‑struck rooftops, the novel celebrates a city that survives by wit over force—and the people whose private loyalties make public liberty possible.</div>
     </div>
+    <div class="caption">Front cover — upload as <code>cover.jpg</code> (or <code>cover.png</code>) to the repo root.</div>
   </div>
 </section>
 
 <section id="about">
   <div class="container">
-    <h2>About the Author</h2>
+    <h2 class="fade-up">About the Author</h2>
     <div class="grid about">
-      <div>
+      <div class="fade-up">
         <div class="author-box">
-          <img id="authorImg" alt="Author photo">
+          <div class="inner">
+            <img id="authorImg" alt="Author photo">
+          </div>
         </div>
-        <p id="authorHint" class="muted" style="text-align:center; margin-top:8px; display:none;">Tip: upload <code>author.jpg</code> (or .png) to the repo root.</p>
+        <p id="authorHint" class="caption" style="display:none;">Upload <code>author.jpg</code> (or <code>.png</code>) to the repo root.</p>
       </div>
-      <div class="card" id="bioText" style="white-space:pre-wrap;">Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books shaped by memory, rumor, and place sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front row seat to temperaments and relationships that later inspired characters. What started as a light, just-for-fun idea grew into a full-length historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth.</div>
+      <div class="card fade-up" id="bioText" style="white-space:pre-wrap;">Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books shaped by memory, rumor, and place sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front row seat to temperaments and relationships that later inspired characters. What started as a light, just‑for‑fun idea grew into a full‑length historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth.</div>
     </div>
-  </div>
-</section>
-
-<section id="dedication">
-  <div class="container">
-    <h2>Dedication</h2>
-    <div class="card" style="white-space:pre-wrap;">To my late father. You warned me about my friends, and you were right. They are wild and crazy in most beautiful ways one can imagine, but I do love them, and I’ve been in good hands all along. Let this book stand as a proof of that and my love for you. Rest easy......my friend.</div>
   </div>
 </section>
 
 <section id="gallery">
   <div class="container">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-      <h2>Gallery</h2>
-      <span class="muted" style="font-size:12px;">Add images named <code>gallery-1.jpg</code> … <code>gallery-12.jpg</code> to the repo root.</span>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <h2 class="fade-up">Gallery</h2>
+      <span class="caption">Add <code>gallery-1.jpg</code> … <code>gallery-12.jpg</code> to the repo root.</span>
     </div>
     <div class="gallery" id="galleryGrid"></div>
   </div>
@@ -118,8 +152,8 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
 
 <section id="contact">
   <div class="container">
-    <h2>Contact</h2>
-    <div class="card">
+    <h2 class="fade-up">Contact</h2>
+    <div class="card fade-up">
       <form class="contact" id="contactForm" method="POST" action="https://formspree.io/f/yourid">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
@@ -131,16 +165,23 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
     <div>© <span id="year"></span> Mijo Radalj. All rights reserved.</div>
     <div>Built with ♥ — static site</div>
   </div>
 </footer>
 
-<!-- Edit UI -->
+<div id="lightbox">
+  <button class="close" aria-label="Close">×</button>
+  <button class="prev" aria-label="Previous">‹</button>
+  <img alt="Gallery image">
+  <button class="next" aria-label="Next">›</button>
+</div>
+
 <div id="editBar">
   <button class="btn" id="openEditor">Edit text</button>
+  <button class="btn ghost" id="cycleTheme">Style</button>
 </div>
 <div id="editorPanel">
   <div id="editorCard">
@@ -148,20 +189,22 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
     <textarea class="ta" id="synopsisTA"></textarea>
     <h3 style="margin-top:14px;">Bio</h3>
     <textarea class="ta" id="bioTA"></textarea>
-    <div style="display:flex; gap:8px; margin-top:12px;">
+    <div style="display:flex;gap:8px;margin-top:12px;">
       <button class="btn" id="applyAndDownload">Apply &amp; Download updated index.html</button>
       <button class="btn ghost" id="closeEditor">Close</button>
     </div>
-    <p class="muted" style="margin-top:8px;">Tip: Press <strong>Shift+E</strong> to toggle edit mode anytime.</p>
+    <p class="note" style="margin-top:8px;">Tip: Press <strong>Shift+E</strong> to toggle edit mode. “Style” cycles theme (Adriatic → Noir → Ivory) and is saved.</p>
   </div>
 </div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Try multiple filenames so images always show
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
   const coverFiles = ['cover.jpg','cover.png','cover.jpg.png'];
-  const authorFiles = ['author.jpg','author.png','author.jpg.png','author%20.jpg.png']; // handles accidental space
+  const authorFiles = ['author.jpg','author.png','author.jpg.png','author%20.jpg.png'];
 
   function tryLoad(el, files, hintEl=null) {
     let i = 0;
@@ -174,34 +217,47 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
     }
     next();
   }
-
   tryLoad(document.getElementById('heroCover'), coverFiles);
   tryLoad(document.getElementById('synopsisCover'), coverFiles);
   tryLoad(document.getElementById('authorImg'), authorFiles, document.getElementById('authorHint'));
 
-  // Build gallery from gallery-1.jpg ... gallery-12.jpg if they exist
   const galleryGrid = document.getElementById('galleryGrid');
   const maxImages = 12;
-  for (let n = 1; n <= maxImages; n++) {
+  const galleryPaths = [];
+  for (let n=1;n<=maxImages;n++) {
     const src = location.origin + '/gallery-' + n + '.jpg';
     const wrap = document.createElement('div');
     wrap.className = 'thumb';
     const img = document.createElement('img');
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.onerror = () => wrap.remove(); // remove if not found
+    img.loading = 'lazy'; img.decoding = 'async';
+    img.onerror = () => wrap.remove();
+    img.onload = () => galleryPaths.push(src);
     img.src = src;
     wrap.appendChild(img);
+    wrap.addEventListener('click', () => openLightbox(src));
     galleryGrid.appendChild(wrap);
   }
 
-  // Contact (placeholder disabled until Formspree is set)
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = lightbox.querySelector('img');
+  const btnClose = lightbox.querySelector('.close');
+  const btnPrev = lightbox.querySelector('.prev');
+  const btnNext = lightbox.querySelector('.next');
+  function openLightbox(src) { lbImg.src = src; lightbox.style.display = 'flex'; currentIndex = galleryPaths.indexOf(src); }
+  function closeLightbox() { lightbox.style.display = 'none'; }
+  let currentIndex = -1;
+  function show(offset) { if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; lbImg.src = galleryPaths[currentIndex]; }
+  btnClose.addEventListener('click', closeLightbox);
+  btnPrev.addEventListener('click', () => show(-1));
+  btnNext.addEventListener('click', () => show(1));
+  window.addEventListener('keydown', (e) => { if (lightbox.style.display==='flex') { if (e.key==='Escape') closeLightbox(); if (e.key==='ArrowLeft') show(-1); if (e.key==='ArrowRight') show(1); } });
+  lightbox.addEventListener('click', (e) => { if (e.target===lightbox) closeLightbox(); });
+
   const form = document.getElementById('contactForm');
   const sendBtn = document.getElementById('sendBtn');
   const note = document.getElementById('contactNote');
   if (!form.action.includes('/f/yourid')) { sendBtn.disabled = false; note.textContent = 'Form is active.'; }
 
-  // --- Edit Mode ---
   const editBar = document.getElementById('editBar');
   const editorPanel = document.getElementById('editorPanel');
   const openEditor = document.getElementById('openEditor');
@@ -211,18 +267,10 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   const synopsisTA = document.getElementById('synopsisTA');
   const bioTA = document.getElementById('bioTA');
   const applyBtn = document.getElementById('applyAndDownload');
+  const cycleThemeBtn = document.getElementById('cycleTheme');
 
-  function toggleEdit(show) {
-    editorPanel.style.display = show ? 'flex' : 'none';
-  }
-
-  function enableEditUI() {
-    editBar.style.display = 'flex';
-    // preload text
-    synopsisTA.value = synopsisEl.textContent;
-    bioTA.value = bioEl.textContent;
-  }
-
+  function toggleEdit(show) { editorPanel.style.display = show ? 'flex' : 'none'; }
+  function enableEditUI() { editBar.style.display = 'flex'; synopsisTA.value = synopsisEl.textContent; bioTA.value = bioEl.textContent; }
   function downloadUpdatedFile() {
     const serializer = new XMLSerializer();
     const docClone = document.documentElement.cloneNode(true);
@@ -237,7 +285,6 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
     a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
   }
-
   openEditor.addEventListener('click', () => toggleEdit(true));
   closeEditor.addEventListener('click', () => toggleEdit(false));
   applyBtn.addEventListener('click', (e) => { e.preventDefault(); synopsisEl.textContent = synopsisTA.value; bioEl.textContent = bioTA.value; downloadUpdatedFile(); toggleEdit(false); });
@@ -245,6 +292,15 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   const params = new URLSearchParams(location.search);
   if (params.get('edit') === '1') enableEditUI();
   window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase() === 'e') enableEditUI(); });
+
+  const themes = ['adriatic','noir','ivory'];
+  cycleThemeBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme') || themes[0];
+    const idx = themes.indexOf(cur);
+    const next = themes[(idx+1)%themes.length];
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
 </script>
 
 </body>
