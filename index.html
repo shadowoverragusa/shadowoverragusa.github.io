@@ -6,11 +6,6 @@
 <title>Shadow over Ragusa — Mijo Radalj</title>
 <meta name="description" content="Shadow over Ragusa — a historical novel of Dubrovnik by Mijo Radalj.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect width='100%25' height='100%25' fill='%230b0d12'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23e6e8ee' font-family='serif' font-size='72'%3ESR%3C/text%3E%3C/svg%3E">
-<meta property="og:title" content="Shadow over Ragusa — Mijo Radalj">
-<meta property="og:description" content="A historical novel about the Republic of Ragusa — how pure love endures under trial.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="/cover.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#131722;--border:#262b36;--accent:#e6e8ee;--gold:#d6b980}
@@ -20,7 +15,7 @@
   header.nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.35);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
   header.nav .row{display:flex;align-items:center;gap:12px;padding:10px 0}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--fg);cursor:pointer;transition:transform .2s ease,background .2s ease}
-  .btn:hover{transform:translateY(-1px)} .btn.ghost{background:transparent}
+  .btn:hover{transform:translateY(-1px)} .btn.ghost{background:transparent} .btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
   .hero{position:relative;height:min(68vh,720px);min-height:360px;display:flex;align-items:flex-end;overflow:hidden}
   .hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.02) brightness(.9) blur(2px)}
   .hero .veil{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,.05))}
@@ -59,7 +54,17 @@
   #editorPanel{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:70}
   #editorCard{width:min(960px,96vw);max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
   #editorCard h3{margin:6px 0 10px} .ta{width:100%;min-height:150px;background:rgba(255,255,255,.03);color:var(--fg);border:1px solid var(--border);border-radius:12px;padding:12px;white-space:pre-wrap}
-  @keyframes fadeUp{to{opacity:1;transform:none}} .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .5s ease .1s forwards}
+  /* Admin */
+  #adminBtn{position:fixed;bottom:18px;left:18px;z-index:80;opacity:.35} #adminBtn:hover{opacity:1}
+  #adminPanel{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;z-index:90;align-items:center;justify-content:center;padding:16px}
+  #adminCard{width:min(980px,96vw);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:220px;flex:1}
+  .field input[type=text], .field input[type=password]{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--fg);border-radius:10px;padding:10px}
+  #drop{border:2px dashed var(--border);border-radius:14px;padding:18px;text-align:center;opacity:.9}
+  #list{margin-top:10px;font-size:14px;max-height:200px;overflow:auto;opacity:.85}
+  .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:6px 10px;margin:4px;background:rgba(255,255,255,.04)}
+  .ok{color:#71e6a0} .warn{color:#f6c05e} .err{color:#ff8a8a}
 </style>
 </head>
 <body>
@@ -80,7 +85,7 @@
 <section id="hero" class="hero">
   <div class="bg"><img id="heroCover" alt="Cover"></div>
   <div class="veil"></div>
-  <div class="content container fade-up">
+  <div class="content container">
     <h1 style="font-size:clamp(2rem,5vw,3.2rem);">Shadow over Ragusa</h1>
     <p class="tagline">A historical novel about the Republic of Ragusa — how pure love endures under trial.</p>
   </div>
@@ -88,12 +93,12 @@
 
 <section id="synopsis">
   <div class="container">
-    <h2 class="fade-up">Synopsis</h2>
+    <h2>Synopsis</h2>
     <div class="grid synopsis">
-      <div class="frame fade-up">
+      <div class="frame">
         <img id="synopsisCover" class="book-cover" alt="Book Cover">
       </div>
-      <div class="card fade-up" id="synopsisText" style="white-space:pre-wrap;">(Edit mode can replace this text.)</div>
+      <div class="card" id="synopsisText" style="white-space:pre-wrap;">Use edit mode (Shift+E) to paste your synopsis here.</div>
     </div>
     <div class="caption">Front cover — upload as <code>cover.jpg</code> (or <code>cover.png</code>) to the repo root.</div>
   </div>
@@ -101,48 +106,41 @@
 
 <section id="about">
   <div class="container">
-    <h2 class="fade-up">About the Author</h2>
+    <h2>About the Author</h2>
     <div class="grid about">
-      <div class="fade-up">
-        <div class="author-box">
-          <div class="inner">
-            <img id="authorImg" alt="Author photo">
-          </div>
-        </div>
+      <div>
+        <div class="author-box"><div class="inner"><img id="authorImg" alt="Author photo"></div></div>
         <p id="authorHint" class="caption" style="display:none;">Upload <code>author.jpg</code> (or <code>.png</code>) to the repo root.</p>
       </div>
-      <div class="card fade-up" id="bioText" style="white-space:pre-wrap;">(Edit mode can replace this text.)</div>
+      <div class="card" id="bioText" style="white-space:pre-wrap;">Use edit mode (Shift+E) to paste your bio here.</div>
     </div>
   </div>
 </section>
 
 <section id="dedication">
   <div class="container">
-    <h2 class="fade-up">Dedication</h2>
-    <div class="card fade-up" style="white-space:pre-wrap;">To my late father…</div>
+    <h2>Dedication</h2>
+    <div class="card" style="white-space:pre-wrap;">To my late father…</div>
   </div>
 </section>
 
 <section id="gallery">
   <div class="container">
     <div class="gallery-cta">
-      <h2 class="fade-up">Gallery</h2>
+      <h2>Gallery</h2>
       <div style="display:flex;align-items:center;gap:10px;">
         <button class="btn" id="openGalleryBtn">Open Gallery</button>
         <span class="count" id="galleryCount">Loading…</span>
       </div>
     </div>
-    <p class="hint">
-      Option A: upload <code>gallery.json</code> with your file names (any names). •
-      Option B: use <code>gallery-1.jpg</code> … numbering. Supports .jpg/.jpeg/.png/.webp.
-    </p>
+    <p class="hint">Use <code>gallery.json</code> for any filenames, or upload numbered files (gallery-1.jpg, …).</p>
   </div>
 </section>
 
 <section id="contact">
   <div class="container">
-    <h2 class="fade-up">Contact</h2>
-    <div class="card fade-up">
+    <h2>Contact</h2>
+    <div class="card">
       <form class="contact" id="contactForm" method="POST" action="https://formspree.io/f/yourid">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
@@ -151,7 +149,7 @@
           <button type="submit" id="sendBtn" disabled>Send</button>
           <button type="button" id="mailBtn" title="Write me privately">Write me</button>
         </div>
-        <p class="note" id="contactNote">Formspree not set yet. “Write me” opens your email app (address hidden on the page).</p>
+        <p class="note" id="contactNote">“Write me” opens your email app (address hidden on the page).</p>
       </form>
     </div>
   </div>
@@ -164,7 +162,7 @@
   </div>
 </footer>
 
-<div id="galleryOverlay" aria-modal="true" role="dialog">
+<div id="galleryOverlay" aria-modal="true" role="dialog" style="display:none">
   <div class="wrap">
     <div class="topbar">
       <div><strong>Gallery</strong> • <span id="overlayCount">0</span> images</div>
@@ -174,27 +172,45 @@
   </div>
 </div>
 
-<div id="lightbox">
+<div id="lightbox" style="display:none">
   <button class="close" aria-label="Close">×</button>
   <button class="prev" aria-label="Previous">‹</button>
   <img alt="Gallery image">
   <button class="next" aria-label="Next">›</button>
 </div>
 
-<div id="editBar">
-  <button class="btn" id="openEditor">Edit text</button>
-</div>
-<div id="editorPanel">
+<div id="editBar" style="display:none"><button class="btn" id="openEditor">Edit text</button></div>
+<div id="editorPanel" style="display:none">
   <div id="editorCard">
     <h3>Synopsis</h3>
     <textarea class="ta" id="synopsisTA"></textarea>
     <h3 style="margin-top:14px;">Bio</h3>
     <textarea class="ta" id="bioTA"></textarea>
     <div style="display:flex;gap:8px;margin-top:12px;">
-      <button class="btn" id="applyAndDownload">Apply &amp; Download updated index.html</button>
+      <button class="btn primary" id="applyAndDownload">Apply &amp; Download updated index.html</button>
       <button class="btn ghost" id="closeEditor">Close</button>
     </div>
     <p class="note" style="margin-top:8px;">Press <strong>Shift+E</strong> to toggle edit mode (text only).</p>
+  </div>
+</div>
+
+<button id="adminBtn" class="btn">Admin</button>
+<div id="adminPanel">
+  <div id="adminCard">
+    <h2 style="margin:4px 0 12px;">Admin — Upload to Gallery</h2>
+    <div class="row">
+      <div class="field"><label>GitHub Token (fine‑grained, contents:read/write)</label><input type="password" id="ghToken" placeholder="Paste your GitHub token"></div>
+      <div class="field"><label>Auto‑rename</label><label class="row" style="gap:6px;"><input type="checkbox" id="autoRename" checked> <span>Rename to <code>gallery-N.ext</code></span></label></div>
+      <div class="field"><label>Folder (optional)</label><input type="text" id="folder" placeholder="e.g. images"></div>
+    </div>
+    <div id="drop">Drop images here or <input type="file" id="fileInput" multiple accept="image/*"></div>
+    <div id="list"></div>
+    <div class="row" style="margin-top:12px;">
+      <button class="btn primary" id="uploadBtn">Upload</button>
+      <button class="btn ghost" id="adminClose">Close</button>
+      <span id="status" class="pill">Waiting…</span>
+    </div>
+    <p class="note" style="margin-top:10px;">Security: your token is used only from your browser to talk to GitHub’s API and isn’t stored.</p>
   </div>
 </div>
 
@@ -213,73 +229,58 @@
   tryLoad(document.getElementById('synopsisCover'), coverFiles);
   tryLoad(document.getElementById('authorImg'), authorFiles, document.getElementById('authorHint'));
 
-  // ---- GALLERY LOADING ----
-  const overlay = document.getElementById('galleryOverlay');
-  const overlayGrid = document.getElementById('overlayGrid');
-  const openBtn = document.getElementById('openGalleryBtn');
-  const closeBtn = document.getElementById('closeOverlay');
-  const navGallery = document.getElementById('navGallery');
+  // Gallery loading
+  const galleryPaths = [];
   const countEl = document.getElementById('galleryCount');
   const overlayCount = document.getElementById('overlayCount');
-  const galleryPaths = [];
-
   async function loadFromManifest(){
     try{
       const res = await fetch('gallery.json', {cache:'no-store'});
       if(!res.ok) return false;
       const data = await res.json();
-      if(Array.isArray(data.images)){
-        data.images.forEach(entry => {
-          if(typeof entry === 'string'){ galleryPaths.push(entry); }
-          else if (entry && typeof entry.src === 'string'){ galleryPaths.push(entry.src); }
-        });
-        countEl.textContent = galleryPaths.length + ' images (manifest)';
-        overlayCount.textContent = galleryPaths.length;
-        return galleryPaths.length > 0;
-      }
-    }catch(e){}
-    return false;
+      const arr = Array.isArray(data.images) ? data.images : [];
+      arr.forEach(s => galleryPaths.push(s));
+      countEl.textContent = galleryPaths.length + ' images (manifest)';
+      overlayCount.textContent = galleryPaths.length;
+      return galleryPaths.length>0;
+    }catch(e){ return false; }
   }
-
   function fallbackNumbered(max=200){
     const EXTS = ['.jpg','.jpeg','.png','.webp'];
     for (let n=1; n<=max; n++){
-      let idx = 0;
-      const img = new Image();
+      let idx=0; const img = new Image();
       function tryNext(){
-        if(idx >= EXTS.length){ return; }
+        if(idx>=EXTS.length) return;
         const src = location.origin + '/gallery-' + n + EXTS[idx++];
-        img.onload = () => { galleryPaths.push(src); countEl.textContent = galleryPaths.length + ' images'; overlayCount.textContent = galleryPaths.length; };
-        img.onerror = tryNext;
-        img.src = src;
-      }
-      tryNext();
+        img.onload = () => { galleryPaths.push('gallery-' + n + EXTS[idx-1]); countEl.textContent = galleryPaths.length + ' images'; overlayCount.textContent = galleryPaths.length; };
+        img.onerror = tryNext; img.src = src;
+      } tryNext();
     }
   }
-
   (async () => {
-    const ok = await loadFromManifest();
-    if(!ok){ fallbackNumbered(); }
-    if(galleryPaths.length === 0){ countEl.textContent = 'No images yet'; }
+    const ok = await loadFromManifest(); if(!ok) fallbackNumbered();
+    if (galleryPaths.length===0) countEl.textContent = 'No images yet';
   })();
 
+  const overlay = document.getElementById('galleryOverlay');
+  const overlayGrid = document.getElementById('overlayGrid');
+  const openBtn = document.getElementById('openGalleryBtn');
+  const closeBtn = document.getElementById('closeOverlay');
+  const navGallery = document.getElementById('navGallery');
   function openOverlay(){
     overlay.style.display = 'block';
     overlayGrid.innerHTML = '';
-    galleryPaths.forEach((src) => {
+    galleryPaths.forEach((p) => {
+      const src = /^[a-z]+:\/\//i.test(p) ? p : (location.origin + '/' + p.replace(/^\//,''));
       const wrap = document.createElement('div'); wrap.className='thumb';
-      const img = document.createElement('img'); img.src = /^[a-z]+:\/\//i.test(src) ? src : (location.origin + '/' + src.replace(/^\//,''));
-      img.loading='lazy'; img.decoding='async';
-      wrap.appendChild(img);
-      wrap.addEventListener('click', () => openLightbox(img.src));
+      const img = document.createElement('img'); img.src = src; img.loading='lazy'; img.decoding='async';
+      wrap.appendChild(img); wrap.addEventListener('click', () => openLightbox(src));
       overlayGrid.appendChild(wrap);
     });
   }
   function closeOverlay(){ overlay.style.display = 'none'; }
-  openBtn.addEventListener('click', openOverlay);
-  closeBtn.addEventListener('click', closeOverlay);
+  openBtn.addEventListener('click', openOverlay); closeBtn.addEventListener('click', closeOverlay);
   navGallery.addEventListener('click', (e) => { e.preventDefault(); openOverlay(); });
-  overlay.addEventListener('click', (e) => { if (e.target===overlay) closeOverlay(); });
 
   // Lightbox
   const lightbox = document.getElementById('lightbox');
@@ -288,39 +289,22 @@
   const btnPrev = lightbox.querySelector('.prev');
   const btnNext = lightbox.querySelector('.next');
   let currentIndex = -1;
-  function openLightbox(src){ lbImg.src = src; lightbox.style.display = 'flex'; currentIndex = galleryPaths.map(s => /^[a-z]+:\/\//i.test(s)? s : (location.origin + '/' + s.replace(/^\//,''))).indexOf(src); }
+  function openLightbox(src){ lbImg.src = src; lightbox.style.display = 'flex'; currentIndex = galleryPaths.map(p => /^[a-z]+:\/\//i.test(p) ? p : (location.origin + '/' + p.replace(/^\//,''))).indexOf(src); }
   function closeLightbox(){ lightbox.style.display = 'none'; }
-  function show(offset){ if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; const src = galleryPaths[currentIndex]; lbImg.src = /^[a-z]+:\/\//i.test(src)? src : (location.origin + '/' + src.replace(/^\//,'')); }
+  function show(offset){ if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; const p = galleryPaths[currentIndex]; lbImg.src = /^[a-z]+:\/\//i.test(p) ? p : (location.origin + '/' + p.replace(/^\//,'')); }
   btnClose.addEventListener('click', closeLightbox);
   btnPrev.addEventListener('click', () => show(-1));
   btnNext.addEventListener('click', () => show(1));
   window.addEventListener('keydown', (e) => { if (lightbox.style.display==='flex') { if (e.key==='Escape') closeLightbox(); if (e.key==='ArrowLeft') show(-1); if (e.key==='ArrowRight') show(1); } });
 
-  // Excerpt button
-  (async () => {
-    try { const res = await fetch('excerpt.pdf', { method:'HEAD' });
-      if (res.ok) { const syn = document.querySelector('#synopsis .container');
-        const btn = document.createElement('a'); btn.href = 'excerpt.pdf'; btn.target = '_blank'; btn.rel = 'noopener';
-        btn.className = 'btn'; btn.style.marginTop = '12px'; btn.textContent = 'Read sample (PDF)';
-        syn.appendChild(btn);
-      }
-    } catch {}
-  })();
+  // Contact
+  document.getElementById('mailBtn').addEventListener('click', () => { location.href = 'mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa%20—%20Enquiry'; });
 
-  // Contact (email hidden)
-  document.getElementById('mailBtn').addEventListener('click', () => {
-    window.location.href = 'mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa%20—%20Enquiry';
-  });
-
-  // Edit mode (text only)
-  const editBar = document.getElementById('editBar');
-  const editorPanel = document.getElementById('editorPanel');
-  const openEditor = document.getElementById('openEditor');
-  const closeEditor = document.getElementById('closeEditor');
-  const synopsisEl = document.getElementById('synopsisText');
-  const bioEl = document.getElementById('bioText');
-  const synopsisTA = document.getElementById('synopsisTA');
-  const bioTA = document.getElementById('bioTA');
+  // Edit mode
+  const editBar = document.getElementById('editBar'); const editorPanel = document.getElementById('editorPanel');
+  const openEditor = document.getElementById('openEditor'); const closeEditor = document.getElementById('closeEditor');
+  const synopsisEl = document.getElementById('synopsisText'); const bioEl = document.getElementById('bioText');
+  const synopsisTA = document.getElementById('synopsisTA'); const bioTA = document.getElementById('bioTA');
   const applyBtn = document.getElementById('applyAndDownload');
   function toggleEdit(show){ editorPanel.style.display = show ? 'flex' : 'none'; }
   function enableEditUI(){ editBar.style.display = 'flex'; synopsisTA.value = synopsisEl.textContent; bioTA.value = bioEl.textContent; }
@@ -329,15 +313,94 @@
     docClone.querySelector('#synopsisText').textContent = synopsisTA.value;
     docClone.querySelector('#bioText').textContent = bioTA.value;
     const blob = new Blob(['<!doctype html>\n' + serializer.serializeToString(docClone)], {type:'text/html'});
-    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index.html'; document.body.appendChild(a); a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index.html'; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();}, 1000);
   }
-  openEditor.addEventListener('click', () => toggleEdit(true));
-  closeEditor.addEventListener('click', () => toggleEdit(false));
+  openEditor.addEventListener('click', () => toggleEdit(true)); closeEditor.addEventListener('click', () => toggleEdit(false));
   applyBtn.addEventListener('click', (e) => { e.preventDefault(); synopsisEl.textContent = synopsisTA.value; bioEl.textContent = bioTA.value; downloadUpdatedFile(); toggleEdit(false); });
   const params = new URLSearchParams(location.search);
-  if (params.get('edit') === '1') enableEditUI();
-  window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase() === 'e') enableEditUI(); });
+  if (params.get('edit') === '1') enableEditUI(); window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase()==='e') enableEditUI(); });
+
+  // Admin Upload (passphrase + GitHub token)
+  const ADMIN_KEY = "ragusa 1986";
+  const adminBtn = document.getElementById('adminBtn');
+  const adminPanel = document.getElementById('adminPanel');
+  const adminClose = document.getElementById('adminClose');
+  const ghToken = document.getElementById('ghToken');
+  const autoRename = document.getElementById('autoRename');
+  const folderInput = document.getElementById('folder');
+  const drop = document.getElementById('drop');
+  const fileInput = document.getElementById('fileInput');
+  const list = document.getElementById('list');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const statusEl = document.getElementById('status');
+
+  let files = [];
+  function setStatus(t, cls=''){ statusEl.textContent = t; statusEl.className = 'pill ' + cls; }
+
+  function askPass(){ const p = prompt('Enter admin key:'); if (!p) return false; if (p.trim() === ADMIN_KEY) return true; alert('Wrong key'); return false; }
+  function openAdmin(){ adminPanel.style.display = 'flex'; }
+  function closeAdmin(){ adminPanel.style.display = 'none'; }
+
+  adminBtn.addEventListener('click', () => { if (askPass()) openAdmin(); });
+  window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase()==='u'){ if (askPass()) openAdmin(); }});
+  adminClose.addEventListener('click', closeAdmin);
+
+  function renderList(){ list.innerHTML = files.map(f => '<span class="pill">'+f.name+' ('+Math.round(f.size/1024)+' KB)</span>').join(''); }
+  fileInput.addEventListener('change', () => { files = Array.from(fileInput.files||[]); renderList(); });
+  drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.style.opacity = 1; });
+  drop.addEventListener('dragleave', () => { drop.style.opacity = .9; });
+  drop.addEventListener('drop', (e) => { e.preventDefault(); drop.style.opacity = .9; files = Array.from(e.dataTransfer.files||[]); renderList(); });
+
+  const OWNER = 'shadowoverragusa'; const REPO = 'shadowoverragusa.github.io'; const BRANCH = 'main';
+
+  function headers(token){ return { 'Authorization': 'token ' + token, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' }; }
+  async function getJSON(path, token){ const r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURIComponent(path)+'?ref='+BRANCH, { headers: headers(token) }); if (r.status===404) return null; if (!r.ok) throw new Error('GET '+path+' failed'); return await r.json(); }
+  async function putFile(path, base64, message, token, sha=null){ const body = { message, content: base64, branch: BRANCH }; if (sha) body.sha = sha;
+    const r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+encodeURIComponent(path), { method:'PUT', headers: headers(token), body: JSON.stringify(body) });
+    if (!r.ok) throw new Error('PUT '+path+' failed: '+r.status+' '+r.statusText); return await r.json();
+  }
+  async function listRoot(token){ const r = await fetch('https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents?ref='+BRANCH, { headers: headers(token) }); if (!r.ok) throw new Error('List root failed'); return await r.json(); }
+
+  function toBase64(file){ return new Promise((resolve, reject) => { const fr = new FileReader(); fr.onload = () => { const b64 = btoa(String.fromCharCode(...new Uint8Array(fr.result))); resolve(b64); }; fr.onerror = reject; fr.readAsArrayBuffer(file); }); }
+
+  async function nextGalleryIndex(token){ try{ const items = await listRoot(token); const nums = items.map(it => it.name).map(n => (n.match(/^gallery-(\d+)\./)||[])[1]).filter(Boolean).map(s => parseInt(s,10)); const max = nums.length? Math.max(...nums):0; return max+1; }catch(e){ return 1; } }
+
+  uploadBtn.addEventListener('click', async () => { try{
+      if (!files.length) return alert('Choose images first');
+      const token = ghToken.value.trim(); if (!token) return alert('Paste your GitHub token');
+      setStatus('Uploading…', 'warn');
+
+      const folder = (folderInput.value||'').replace(/^\/+|\/+$/g, ''); // trim slashes
+      const prefix = folder ? folder+'/' : '';
+
+      let manifest = { images: [] }; let manifestSha = null;
+      try{ const js = await getJSON('gallery.json', token); if (js) { manifest = JSON.parse(atob(js.content)); manifestSha = js.sha; } }catch(e){}
+
+      let n = autoRename.checked ? await nextGalleryIndex(token) : null;
+      const added = [];
+
+      for (const file of files) {
+        const parts = file.name.split('.'); const ext = (parts.pop()||'jpg').toLowerCase();
+        const name = autoRename.checked ? ('gallery-' + (n++) + '.' + ext) : file.name;
+        const path = prefix + name;
+        const b64 = await toBase64(file);
+        await putFile(path, b64, 'Add image '+name+' via admin panel', token);
+        added.push(path);
+        setStatus('Uploaded '+name, 'ok');
+      }
+
+      manifest.images = (manifest.images||[]).concat(added);
+      const manifestB64 = btoa(unescape(encodeURIComponent(JSON.stringify(manifest, null, 2))));
+      await putFile('gallery.json', manifestB64, 'Update gallery.json', token, manifestSha);
+
+      setStatus('Done. '+added.length+' image(s) added.', 'ok');
+      alert('Upload complete. Refresh the page.');
+    }catch(e){
+      console.error(e); setStatus('Error: '+e.message, 'err'); alert(e.message);
+    }
+  });
+
+  if (new URLSearchParams(location.search).get('admin')==='1') { if (askPass()) openAdmin(); }
 </script>
 </body>
 </html>
