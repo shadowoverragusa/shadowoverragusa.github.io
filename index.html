@@ -99,10 +99,14 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   <div class="container">
     <h2>Highlights — Why this book is special</h2>
     <div class="hl-grid">
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div><ul class="hl-list"><li>A small but powerful maritime republic.</li><li>Between Venice and the Ottoman Empire.</li><li>Architecture, customs, salt trade, noble families.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">Loyalty, Courage &amp; Sacrifice</div></div><ul class="hl-list"><li>Pure, human, and timeless.</li><li>Tested by war, faith, politics.</li><li>Love that shapes destiny.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">Intelligent Female Lead</div></div><ul class="hl-list"><li>Iva is brave, clever, principled.</li><li>Acts; never waits to be saved.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, Legacy</div></div><ul class="hl-list"><li>Peace over tragedy.</li><li>Independence preserved.</li><li>Love rewarded after sacrifice.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div><ul class="hl-list"><li>A small but powerful maritime republic.</li><li>Diplomacy & survival between Venice and the Ottomans.</li><li>Architecture, customs, salt trade, noble families.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">A Love Story Built on Loyalty</div></div><ul class="hl-list"><li>Pure and true—not scandalous.</li><li>Tested by war, faith, politics.</li><li>Emotionally human, noble, timeless.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">A Strong Female Lead</div></div><ul class="hl-list"><li>Iva is brave, clever, principled.</li><li>Not royalty, yet central to history.</li><li>Acts rather than waits to be saved.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">⚔</span><div class="hl-title">Epic Stakes, Human Hearts</div></div><ul class="hl-list"><li>Love & devotion amid espionage.</li><li>War, betrayal, faith, survival.</li><li>Diplomacy instead of conquest.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🌍</span><div class="hl-title">Coexistence & Cultural Respect</div></div><ul class="hl-list"><li>East and West find understanding.</li><li>Conversion as sacrifice for peace.</li><li>Love across culture & empire.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏰</span><div class="hl-title">Rich Worldbuilding & Atmosphere</div></div><ul class="hl-list"><li>Stone streets, villas, palaces, ports.</li><li>Constantinople’s courts & mosques.</li><li>Noble households and harbor life.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🎭</span><div class="hl-title">Multiple Compelling Characters</div></div><ul class="hl-list"><li>Luka and Lady Ana’s romance.</li><li>Venetian spies disguised as priests.</li><li>Lords Ivano and Vjeko’s decisions.</li></ul></div>
+      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, and Legacy</div></div><ul class="hl-list"><li>Peace over tragedy.</li><li>Independence preserved.</li><li>Love rewarded after sacrifice.</li></ul></div>
     </div>
   </div>
 </section>
@@ -189,7 +193,7 @@ document.getElementById('mailBtn').addEventListener('click',()=>{location.href='
 // Load cover/author images
 const coverFiles=['cover.jpg','cover.png','cover.jpg.png'];
 const authorFiles=['author.jpg','author.png','author.jpg.png','author%20.jpg.png'];
-function tryLoad(el, arr){let i=0,constBase=location.origin+'/';(function next(){if(i>=arr.length)return;el.onerror=()=>{i++;next();};el.src=constBase+arr[i];})();}
+function tryLoad(el, arr){let i=0;const base=location.origin+'/';(function next(){if(i>=arr.length)return;el.onerror=()=>{i++;next();};el.src=base+arr[i];})();}
 tryLoad(document.getElementById('heroCover'),coverFiles);
 tryLoad(document.getElementById('synopsisCover'),coverFiles);
 tryLoad(document.getElementById('authorImg'),authorFiles);
@@ -225,7 +229,7 @@ adminBtn.addEventListener('click',()=>{adminPanel.style.display='flex';});
 closeAdmin.addEventListener('click',()=>{adminPanel.style.display='none';});
 
 let files=[];
-fileInput.addEventListener('change',()=>{files=[...fileInput.files];listEl.innerHTML=files.map(f=>`<span class="pill">${f.name} (${Math.round(f.size/1024)} KB)</span>`).join('');});
+fileInput.addEventListener('change',()=>{files=[...fileInput.files];listEl.innerHTML=files.map(f=>`<span class='pill'>${f.name} (${Math.round(f.size/1024)} KB)</span>`).join('');});
 
 function headers(token){return {'Authorization':'token '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};}
 async function listRoot(token){const r=await fetch('https://api.github.com/repos/shadowoverragusa/shadowoverragusa.github.io/contents?ref=main',{headers:headers(token)});if(!r.ok)throw new Error('List failed');return r.json();}
