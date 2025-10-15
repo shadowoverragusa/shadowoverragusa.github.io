@@ -48,14 +48,23 @@
   .author-box .inner::after{content:'';position:absolute;inset:8px;border-radius:14px;border:1px solid rgba(214,185,128,.6);}
   .author-box img{width:100%;height:100%;object-fit:cover;}
 
-  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-  @media (min-width:900px){ .gallery{grid-template-columns:repeat(4,1fr);} }
+  /* GALLERY CTA (no grid on page) */
+  .gallery-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .hint{font-size:12px;color:var(--muted);}
+
+  /* FULLSCREEN OVERLAY GRID */
+  #galleryOverlay{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:55;overflow:auto;}
+  #galleryOverlay .wrap{max-width:1200px;margin:0 auto;padding:20px;}
+  #galleryOverlay .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  #galleryOverlay .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media (min-width:900px){ #galleryOverlay .grid{grid-template-columns:repeat(4,1fr);} }
   .thumb{aspect-ratio:4/3;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101521;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease;}
   .thumb:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.35);}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .thumb .cap{font-size:12px;color:var(--muted);padding:6px 6px 8px;}
+  .count{font-size:12px;color:#c9ced8;}
 
-  #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;}
+  /* LIGHTBOX (for viewing a single image) */
+  #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:60;}
   #lightbox img{max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
   #lightbox .close{position:absolute;top:18px;right:20px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer;}
   #lightbox .prev,#lightbox .next{position:absolute;top:50%;transform:translateY(-50%);font-size:32px;background:transparent;color:#fff;border:0;cursor:pointer;padding:10px 14px;}
@@ -69,7 +78,7 @@
   footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padding:28px 0;}
 
   #editBar{position:fixed;bottom:18px;right:18px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);display:none;gap:8px;}
-  #editorPanel{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:60;}
+  #editorPanel{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:70;}
   #editorCard{width:min(960px,96vw);max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;}
   #editorCard h3{margin:6px 0 10px;}
   .ta{width:100%;min-height:150px;background:rgba(255,255,255,.03);color:var(--fg);border:1px solid var(--border);border-radius:12px;padding:12px;white-space:pre-wrap;}
@@ -89,7 +98,7 @@
       <a class="btn ghost" href="#hero">Home</a>
       <a class="btn ghost" href="#synopsis">Synopsis</a>
       <a class="btn ghost" href="#about">About</a>
-      <a class="btn ghost" href="#gallery">Gallery</a>
+      <a class="btn ghost" href="#gallery" id="navGallery">Gallery</a>
       <a class="btn ghost" href="#contact">Contact</a>
     </nav>
   </div>
@@ -149,11 +158,14 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
 
 <section id="gallery">
   <div class="container">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+    <div class="gallery-cta">
       <h2 class="fade-up">Gallery</h2>
-      <span class="caption">Add <code>gallery-1.jpg</code> … <code>gallery-12.jpg</code> to the repo root.</span>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="btn" id="openGalleryBtn">Open Gallery</button>
+        <span class="count" id="galleryCount">Loading…</span>
+      </div>
     </div>
-    <div class="gallery" id="galleryGrid"></div>
+    <p class="hint">Add files named <code>gallery-1.jpg</code> … <code>gallery-24.jpg</code> to the repo root. Images open in a full-screen overlay; nothing clutters the page.</p>
   </div>
 </section>
 
@@ -182,6 +194,18 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   </div>
 </footer>
 
+<!-- FULLSCREEN Gallery Overlay -->
+<div id="galleryOverlay" aria-modal="true" role="dialog">
+  <div class="wrap">
+    <div class="topbar">
+      <div><strong>Gallery</strong> • <span id="overlayCount">0</span> images</div>
+      <button class="btn" id="closeOverlay">Close</button>
+    </div>
+    <div class="grid" id="overlayGrid"></div>
+  </div>
+</div>
+
+<!-- Lightbox for single image -->
 <div id="lightbox">
   <button class="close" aria-label="Close">×</button>
   <button class="prev" aria-label="Previous">‹</button>
@@ -189,6 +213,7 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   <button class="next" aria-label="Next">›</button>
 </div>
 
+<!-- Hidden on-page Edit -->
 <div id="editBar">
   <button class="btn" id="openEditor">Edit text</button>
 </div>
@@ -202,7 +227,7 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
       <button class="btn" id="applyAndDownload">Apply &amp; Download updated index.html</button>
       <button class="btn ghost" id="closeEditor">Close</button>
     </div>
-    <p class="note" style="margin-top:8px;">Press <strong>Shift+E</strong> to toggle edit mode anytime. Theme is locked for consistency.</p>
+    <p class="note" style="margin-top:8px;">Press <strong>Shift+E</strong> to toggle edit mode (text only).</p>
   </div>
 </div>
 
@@ -221,38 +246,73 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   tryLoad(document.getElementById('synopsisCover'), coverFiles);
   tryLoad(document.getElementById('authorImg'), authorFiles, document.getElementById('authorHint'));
 
-  const galleryGrid = document.getElementById('galleryGrid');
-  const maxImages = 12; const galleryPaths = [];
+  // --- Build gallery list without showing on page ---
+  const maxImages = 24;
+  const galleryPaths = [];
+  const countEl = document.getElementById('galleryCount');
+  const overlayCount = document.getElementById('overlayCount');
   for (let n=1;n<=maxImages;n++) {
     const src = location.origin + '/gallery-' + n + '.jpg';
-    const wrap = document.createElement('div'); wrap.className = 'thumb';
-    const img = document.createElement('img'); img.loading = 'lazy'; img.decoding = 'async';
-    img.onerror = () => wrap.remove(); img.onload = () => galleryPaths.push(src);
-    img.src = src; wrap.appendChild(img);
-    const cap = document.createElement('div'); cap.className = 'cap'; cap.textContent = 'Photo ' + n; wrap.appendChild(cap);
-    wrap.addEventListener('click', () => openLightbox(src));
-    galleryGrid.appendChild(wrap);
+    const img = new Image();
+    img.decoding = 'async'; img.loading = 'lazy';
+    img.onload = () => { galleryPaths.push(src); countEl.textContent = galleryPaths.length + ' images'; overlayCount.textContent = galleryPaths.length; };
+    img.onerror = () => { if (n===maxImages && galleryPaths.length===0) countEl.textContent = 'No images yet'; };
+    img.src = src;
   }
-  const lightbox = document.getElementById('lightbox'); const lbImg = lightbox.querySelector('img');
-  const btnClose = lightbox.querySelector('.close'); const btnPrev = lightbox.querySelector('.prev'); const btnNext = lightbox.querySelector('.next');
+
+  // --- Overlay open/close + grid build ---
+  const overlay = document.getElementById('galleryOverlay');
+  const overlayGrid = document.getElementById('overlayGrid');
+  const openBtn = document.getElementById('openGalleryBtn');
+  const closeBtn = document.getElementById('closeOverlay');
+  const navGallery = document.getElementById('navGallery');
+
+  function openOverlay() {
+    overlay.style.display = 'block';
+    overlayGrid.innerHTML = '';
+    galleryPaths.forEach((src, idx) => {
+      const wrap = document.createElement('div'); wrap.className='thumb';
+      const img = document.createElement('img'); img.src = src; img.loading='lazy'; img.decoding='async';
+      wrap.appendChild(img);
+      wrap.addEventListener('click', () => openLightbox(src));
+      overlayGrid.appendChild(wrap);
+    });
+  }
+  function closeOverlay() { overlay.style.display = 'none'; }
+  openBtn.addEventListener('click', openOverlay);
+  closeBtn.addEventListener('click', closeOverlay);
+  navGallery.addEventListener('click', (e) => { e.preventDefault(); openOverlay(); });
+  window.addEventListener('keydown', (e) => { if (e.key==='Escape' && overlay.style.display==='block' && document.getElementById('lightbox').style.display!=='flex') closeOverlay(); });
+  overlay.addEventListener('click', (e) => { if (e.target===overlay) closeOverlay(); });
+
+  // --- Lightbox (single image) ---
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = lightbox.querySelector('img');
+  const btnClose = lightbox.querySelector('.close');
+  const btnPrev = lightbox.querySelector('.prev');
+  const btnNext = lightbox.querySelector('.next');
+  let currentIndex = -1;
   function openLightbox(src) { lbImg.src = src; lightbox.style.display = 'flex'; currentIndex = galleryPaths.indexOf(src); }
   function closeLightbox() { lightbox.style.display = 'none'; }
-  let currentIndex = -1; function show(offset) { if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; lbImg.src = galleryPaths[currentIndex]; }
-  btnClose.addEventListener('click', closeLightbox); btnPrev.addEventListener('click', () => show(-1)); btnNext.addEventListener('click', () => show(1));
+  function show(offset) { if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; lbImg.src = galleryPaths[currentIndex]; }
+  btnClose.addEventListener('click', closeLightbox);
+  btnPrev.addEventListener('click', () => show(-1));
+  btnNext.addEventListener('click', () => show(1));
   window.addEventListener('keydown', (e) => { if (lightbox.style.display==='flex') { if (e.key==='Escape') closeLightbox(); if (e.key==='ArrowLeft') show(-1); if (e.key==='ArrowRight') show(1); } });
   lightbox.addEventListener('click', (e) => { if (e.target===lightbox) closeLightbox(); });
 
+  // --- Excerpt button (appears if excerpt.pdf exists) ---
   (async () => {
-    try {
-      const res = await fetch('excerpt.pdf', { method:'HEAD' });
-      if (res.ok) {
-        const syn = document.querySelector('#synopsis .container');
+    try { const res = await fetch('excerpt.pdf', { method:'HEAD' });
+      if (res.ok) { const syn = document.querySelector('#synopsis .container');
         const btn = document.createElement('a'); btn.href = 'excerpt.pdf'; btn.target = '_blank'; btn.rel = 'noopener';
-        btn.className = 'btn'; btn.style.marginTop = '12px'; btn.textContent = 'Read sample (PDF)'; syn.appendChild(btn);
+        btn.className = 'btn'; btn.style.marginTop = '12px'; btn.textContent = 'Read sample (PDF)';
+        syn.appendChild(btn);
       }
     } catch { /* ignore */ }
   })();
 
+  // --- Contact “Write me” button (email hidden) ---
   const mailBtn = document.getElementById('mailBtn');
   mailBtn.addEventListener('click', () => { window.location.href = 'mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa%20—%20Enquiry'; });
 
@@ -261,6 +321,7 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   const note = document.getElementById('contactNote');
   if (!form.action.includes('/f/yourid')) { sendBtn.disabled = false; note.textContent = 'Form is active.'; }
 
+  // --- Edit mode (text only) ---
   const editBar = document.getElementById('editBar');
   const editorPanel = document.getElementById('editorPanel');
   const openEditor = document.getElementById('openEditor');
@@ -274,17 +335,23 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   function toggleEdit(show) { editorPanel.style.display = show ? 'flex' : 'none'; }
   function enableEditUI() { editBar.style.display = 'flex'; synopsisTA.value = synopsisEl.textContent; bioTA.value = bioEl.textContent; }
   function downloadUpdatedFile() {
-    const serializer = new XMLSerializer(); const docClone = document.documentElement.cloneNode(true);
+    const serializer = new XMLSerializer();
+    const docClone = document.documentElement.cloneNode(true);
     docClone.querySelector('#synopsisText').textContent = synopsisTA.value;
     docClone.querySelector('#bioText').textContent = bioTA.value;
     const htmlText = '<!doctype html>\n' + serializer.serializeToString(docClone);
-    const blob = new Blob([htmlText], {type: 'text/html'}); const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'index.html'; document.body.appendChild(a); a.click();
+    const blob = new Blob([htmlText], {type: 'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+    document.body.appendChild(a);
+    a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
   }
   openEditor.addEventListener('click', () => toggleEdit(true));
   closeEditor.addEventListener('click', () => toggleEdit(false));
   applyBtn.addEventListener('click', (e) => { e.preventDefault(); synopsisEl.textContent = synopsisTA.value; bioEl.textContent = bioTA.value; downloadUpdatedFile(); toggleEdit(false); });
+
   const params = new URLSearchParams(location.search);
   if (params.get('edit') === '1') enableEditUI();
   window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase() === 'e') enableEditUI(); });
