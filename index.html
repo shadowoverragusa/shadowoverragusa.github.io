@@ -10,13 +10,12 @@
 <meta property="og:description" content="A historical novel about the Republic of Ragusa — how pure love endures under trial.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#131722;--border:#262b36;--accent:#e6e8ee;--gold:#d6b980;}
-  html[data-theme="noir"]{--bg:#0b0b0b;--fg:#f2f2f2;--muted:#a8a8a8;--card:#141414;--border:#2a2a2a;--accent:#e7e7e7;--gold:#c9b37a;}
-  html[data-theme="ivory"]{--bg:#f7f5ef;--fg:#1d1f23;--muted:#5b6573;--card:#ffffff;--border:#e7e3d8;--accent:#1d1f23;--gold:#b59b5a;}
-
-  *{box-sizing:border-box;} html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;line-height:1.7;}
   h1,h2,h3{font-family:'Playfair Display',serif;margin:0 0 12px;letter-spacing:.2px;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
@@ -36,13 +35,13 @@
 
   section{padding:46px 0;}
   .grid{display:grid;grid-template-columns:1fr;gap:20px;}
-  @media (min-width:900px){ .grid.synopsis{grid-template-columns:360px 1fr;gap:26px;} .grid.about{grid-template-columns:1.05fr 1fr;gap:26px;} }
-  .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 12px 36px rgba(0,0,0,.25);}
+  @media (min-width:900px){ .grid.synopsis{grid-template-columns:340px 1fr;gap:26px;} .grid.about{grid-template-columns:1.05fr 1fr;gap:26px;} }
+  .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25);}
   .frame{border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.02);padding:12px;display:flex;align-items:center;justify-content:center;box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);}
-  .book-cover{width:100%;height:auto;max-height:78vh;object-fit:contain;}
+  .book-cover{width:100%;height:auto;max-height:65vh;object-fit:contain;}
   .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center;}
 
-  #synopsisText::first-letter{float:left;font-family:'Playfair Display',serif;font-size:3.2rem;line-height:0.8;color:var(--gold);padding:8px 10px 0 0;}
+  #synopsisText::first-letter{float:left;font-family:'Playfair Display',serif;font-size:3rem;line-height:0.8;color:var(--gold);padding:8px 10px 0 0;}
 
   .author-box{width:100%;max-width:460px;height:580px;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,.02);display:flex;align-items:center;justify-content:center;margin:auto;box-shadow:0 12px 32px rgba(0,0,0,.25);}
   .author-box .inner{position:relative;width:100%;height:100%;}
@@ -51,9 +50,10 @@
 
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
   @media (min-width:900px){ .gallery{grid-template-columns:repeat(4,1fr);} }
-  .thumb{aspect-ratio:4/3;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101521;cursor:pointer;transition:transform .2s ease;}
-  .thumb:hover{transform:translateY(-2px);}
+  .thumb{aspect-ratio:4/3;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#101521;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease;}
+  .thumb:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.35);}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .thumb .cap{font-size:12px;color:var(--muted);padding:6px 6px 8px;}
 
   #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;}
   #lightbox img{max-width:92vw;max-height:92vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);}
@@ -140,6 +140,13 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   </div>
 </section>
 
+<section id="dedication">
+  <div class="container">
+    <h2 class="fade-up">Dedication</h2>
+    <div class="card fade-up" style="white-space:pre-wrap;">To my late father. You warned me about my friends, and you were right. They are wild and crazy in most beautiful ways one can imagine, but I do love them, and I’ve been in good hands all along. Let this book stand as a proof of that and my love for you. Rest easy......my friend.</div>
+  </div>
+</section>
+
 <section id="gallery">
   <div class="container">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
@@ -158,8 +165,11 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" rows="6" placeholder="Your message" required></textarea>
-        <button type="submit" id="sendBtn" disabled>Send</button>
-        <p class="note" id="contactNote">To keep your email private, this form uses Formspree. I’ll show you how to turn it on in a later step.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button type="submit" id="sendBtn" disabled>Send</button>
+          <button type="button" id="mailBtn" title="Write me privately">Write me</button>
+        </div>
+        <p class="note" id="contactNote">Formspree not set yet. “Write me” opens your email app (address is hidden on the page).</p>
       </form>
     </div>
   </div>
@@ -181,7 +191,6 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
 
 <div id="editBar">
   <button class="btn" id="openEditor">Edit text</button>
-  <button class="btn ghost" id="cycleTheme">Style</button>
 </div>
 <div id="editorPanel">
   <div id="editorCard">
@@ -193,65 +202,59 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
       <button class="btn" id="applyAndDownload">Apply &amp; Download updated index.html</button>
       <button class="btn ghost" id="closeEditor">Close</button>
     </div>
-    <p class="note" style="margin-top:8px;">Tip: Press <strong>Shift+E</strong> to toggle edit mode. “Style” cycles theme (Adriatic → Noir → Ivory) and is saved.</p>
+    <p class="note" style="margin-top:8px;">Press <strong>Shift+E</strong> to toggle edit mode anytime. Theme is locked for consistency.</p>
   </div>
 </div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-
   const coverFiles = ['cover.jpg','cover.png','cover.jpg.png'];
   const authorFiles = ['author.jpg','author.png','author.jpg.png','author%20.jpg.png'];
-
   function tryLoad(el, files, hintEl=null) {
-    let i = 0;
-    const base = location.origin + '/';
-    function next() {
-      if (i >= files.length) { if (hintEl) hintEl.style.display = 'block'; return; }
-      el.onerror = () => { i++; next(); };
-      el.onload = () => { if (hintEl) hintEl.style.display = 'none'; };
-      el.src = base + files[i];
-    }
-    next();
+    let i = 0; const base = location.origin + '/';
+    function next(){ if (i >= files.length) { if (hintEl) hintEl.style.display = 'block'; return; }
+      el.onerror = () => { i++; next(); }; el.onload = () => { if (hintEl) hintEl.style.display = 'none'; }; el.src = base + files[i];
+    } next();
   }
   tryLoad(document.getElementById('heroCover'), coverFiles);
   tryLoad(document.getElementById('synopsisCover'), coverFiles);
   tryLoad(document.getElementById('authorImg'), authorFiles, document.getElementById('authorHint'));
 
   const galleryGrid = document.getElementById('galleryGrid');
-  const maxImages = 12;
-  const galleryPaths = [];
+  const maxImages = 12; const galleryPaths = [];
   for (let n=1;n<=maxImages;n++) {
     const src = location.origin + '/gallery-' + n + '.jpg';
-    const wrap = document.createElement('div');
-    wrap.className = 'thumb';
-    const img = document.createElement('img');
-    img.loading = 'lazy'; img.decoding = 'async';
-    img.onerror = () => wrap.remove();
-    img.onload = () => galleryPaths.push(src);
-    img.src = src;
-    wrap.appendChild(img);
+    const wrap = document.createElement('div'); wrap.className = 'thumb';
+    const img = document.createElement('img'); img.loading = 'lazy'; img.decoding = 'async';
+    img.onerror = () => wrap.remove(); img.onload = () => galleryPaths.push(src);
+    img.src = src; wrap.appendChild(img);
+    const cap = document.createElement('div'); cap.className = 'cap'; cap.textContent = 'Photo ' + n; wrap.appendChild(cap);
     wrap.addEventListener('click', () => openLightbox(src));
     galleryGrid.appendChild(wrap);
   }
-
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = lightbox.querySelector('img');
-  const btnClose = lightbox.querySelector('.close');
-  const btnPrev = lightbox.querySelector('.prev');
-  const btnNext = lightbox.querySelector('.next');
+  const lightbox = document.getElementById('lightbox'); const lbImg = lightbox.querySelector('img');
+  const btnClose = lightbox.querySelector('.close'); const btnPrev = lightbox.querySelector('.prev'); const btnNext = lightbox.querySelector('.next');
   function openLightbox(src) { lbImg.src = src; lightbox.style.display = 'flex'; currentIndex = galleryPaths.indexOf(src); }
   function closeLightbox() { lightbox.style.display = 'none'; }
-  let currentIndex = -1;
-  function show(offset) { if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; lbImg.src = galleryPaths[currentIndex]; }
-  btnClose.addEventListener('click', closeLightbox);
-  btnPrev.addEventListener('click', () => show(-1));
-  btnNext.addEventListener('click', () => show(1));
+  let currentIndex = -1; function show(offset) { if (galleryPaths.length<1) return; currentIndex = (currentIndex + offset + galleryPaths.length) % galleryPaths.length; lbImg.src = galleryPaths[currentIndex]; }
+  btnClose.addEventListener('click', closeLightbox); btnPrev.addEventListener('click', () => show(-1)); btnNext.addEventListener('click', () => show(1));
   window.addEventListener('keydown', (e) => { if (lightbox.style.display==='flex') { if (e.key==='Escape') closeLightbox(); if (e.key==='ArrowLeft') show(-1); if (e.key==='ArrowRight') show(1); } });
   lightbox.addEventListener('click', (e) => { if (e.target===lightbox) closeLightbox(); });
+
+  (async () => {
+    try {
+      const res = await fetch('excerpt.pdf', { method:'HEAD' });
+      if (res.ok) {
+        const syn = document.querySelector('#synopsis .container');
+        const btn = document.createElement('a'); btn.href = 'excerpt.pdf'; btn.target = '_blank'; btn.rel = 'noopener';
+        btn.className = 'btn'; btn.style.marginTop = '12px'; btn.textContent = 'Read sample (PDF)'; syn.appendChild(btn);
+      }
+    } catch { /* ignore */ }
+  })();
+
+  const mailBtn = document.getElementById('mailBtn');
+  mailBtn.addEventListener('click', () => { window.location.href = 'mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa%20—%20Enquiry'; });
 
   const form = document.getElementById('contactForm');
   const sendBtn = document.getElementById('sendBtn');
@@ -267,40 +270,24 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   const synopsisTA = document.getElementById('synopsisTA');
   const bioTA = document.getElementById('bioTA');
   const applyBtn = document.getElementById('applyAndDownload');
-  const cycleThemeBtn = document.getElementById('cycleTheme');
 
   function toggleEdit(show) { editorPanel.style.display = show ? 'flex' : 'none'; }
   function enableEditUI() { editBar.style.display = 'flex'; synopsisTA.value = synopsisEl.textContent; bioTA.value = bioEl.textContent; }
   function downloadUpdatedFile() {
-    const serializer = new XMLSerializer();
-    const docClone = document.documentElement.cloneNode(true);
+    const serializer = new XMLSerializer(); const docClone = document.documentElement.cloneNode(true);
     docClone.querySelector('#synopsisText').textContent = synopsisTA.value;
     docClone.querySelector('#bioText').textContent = bioTA.value;
     const htmlText = '<!doctype html>\n' + serializer.serializeToString(docClone);
-    const blob = new Blob([htmlText], {type: 'text/html'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'index.html';
-    document.body.appendChild(a);
-    a.click();
+    const blob = new Blob([htmlText], {type: 'text/html'}); const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'index.html'; document.body.appendChild(a); a.click();
     setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
   }
   openEditor.addEventListener('click', () => toggleEdit(true));
   closeEditor.addEventListener('click', () => toggleEdit(false));
   applyBtn.addEventListener('click', (e) => { e.preventDefault(); synopsisEl.textContent = synopsisTA.value; bioEl.textContent = bioTA.value; downloadUpdatedFile(); toggleEdit(false); });
-
   const params = new URLSearchParams(location.search);
   if (params.get('edit') === '1') enableEditUI();
   window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase() === 'e') enableEditUI(); });
-
-  const themes = ['adriatic','noir','ivory'];
-  cycleThemeBtn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme') || themes[0];
-    const idx = themes.indexOf(cur);
-    const next = themes[(idx+1)%themes.length];
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
 </script>
 
 </body>
