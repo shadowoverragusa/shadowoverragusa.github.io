@@ -23,14 +23,22 @@
   section{padding:46px 0} .grid{display:grid;grid-template-columns:1fr;gap:20px}
   @media (min-width:900px){ .grid.synopsis{grid-template-columns:340px 1fr;gap:26px} .grid.about{grid-template-columns:1.05fr 1fr;gap:26px} }
   .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25)}
-  .frame{border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.02);padding:12px;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-  .book-cover{width:100%;height:auto;max-height:65vh;object-fit:contain}
+  /* Tight frame for cover: no padding; shrink to image */
+  #synopsis .frame{display:inline-block;padding:0;margin:0 auto;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.25);line-height:0}
+  .book-cover{display:block;width:auto;height:auto;max-width:100%;max-height:65vh;object-fit:contain}
   .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
   #synopsisText::first-letter{float:left;font-family:'Playfair Display',serif;font-size:3rem;line-height:0.8;color:var(--gold);padding:8px 10px 0 0}
   .author-box{width:100%;max-width:460px;height:580px;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:rgba(255,255,255,.02);display:flex;align-items:center;justify-content:center;margin:auto;box-shadow:0 12px 32px rgba(0,0,0,.25)}
   .author-box .inner{position:relative;width:100%;height:100%} .author-box .inner::after{content:'';position:absolute;inset:8px;border-radius:14px;border:1px solid rgba(214,185,128,.6)}
   .author-box img{width:100%;height:100%;object-fit:cover}
-  .gallery-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  /* Highlights cards */
+  .hl-grid{display:grid;grid-template-columns:1fr;gap:16px}
+  @media (min-width:900px){ .hl-grid{grid-template-columns:1fr 1fr} }
+  .hl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 28px rgba(0,0,0,.25)}
+  .hl-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .hl-icon{font-size:20px} .hl-title{font-family:'Playfair Display',serif;font-size:1.1rem}
+  .hl-list{margin:8px 0 0 0;padding-left:18px}
+  .hl-list li{margin:4px 0}
   .hint{font-size:12px;color:var(--muted)}
   #galleryOverlay{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:55;overflow:auto}
   #galleryOverlay .wrap{max-width:1200px;margin:0 auto;padding:20px}
@@ -95,12 +103,94 @@
   <div class="container">
     <h2>Synopsis</h2>
     <div class="grid synopsis">
-      <div class="frame">
-        <img id="synopsisCover" class="book-cover" alt="Book Cover">
+      <div>
+        <div class="frame">
+          <img id="synopsisCover" class="book-cover" alt="Book Cover">
+        </div>
+        <div class="caption">Front cover — upload as <code>cover.jpg</code> (or <code>cover.png</code>) to the repo root.</div>
       </div>
       <div class="card" id="synopsisText" style="white-space:pre-wrap;">Use edit mode (Shift+E) to paste your synopsis here.</div>
     </div>
-    <div class="caption">Front cover — upload as <code>cover.jpg</code> (or <code>cover.png</code>) to the repo root.</div>
+  </div>
+</section>
+
+<section id="highlights">
+  <div class="container">
+    <h2>Highlights — Why this book is special</h2>
+    <div class="hl-grid">
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div>
+        <ul class="hl-list">
+          <li>A small but powerful maritime republic.</li>
+          <li>Diplomacy and survival between Venice and the Ottoman Empire.</li>
+          <li>Architecture, customs, salt trade, and noble families.</li>
+          <li>Fresh, untold ground—rare and captivating.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">A Love Story of Loyalty, Courage &amp; Sacrifice</div></div>
+        <ul class="hl-list">
+          <li>Pure and true—not forbidden or scandalous.</li>
+          <li>Tested by war, faith, distance, and politics.</li>
+          <li>A force that changes the destiny of their world.</li>
+          <li>Human, noble, and timeless.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">A Strong, Intelligent Female Lead</div></div>
+        <ul class="hl-list">
+          <li>Iva is brave, clever, principled, and emotionally deep.</li>
+          <li>Not royalty, yet central to history.</li>
+          <li>Takes action rather than waiting to be saved.</li>
+          <li>A heroine readers admire and love.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">⚔</span><div class="hl-title">Epic Stakes with Human Hearts</div></div>
+        <ul class="hl-list">
+          <li>Love and devotion amid political tension and espionage.</li>
+          <li>War, betrayal, faith, and survival.</li>
+          <li>Diplomacy instead of conquest.</li>
+          <li>Cinematic yet intimate.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">🌍</span><div class="hl-title">Coexistence &amp; Cultural Respect</div></div>
+        <ul class="hl-list">
+          <li>East and West finding understanding.</li>
+          <li>Conversion as sacrifice for peace—not loss of identity.</li>
+          <li>Love transcending culture, language, and empire.</li>
+          <li>Timely and universal.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">🏰</span><div class="hl-title">Rich Worldbuilding &amp; Atmosphere</div></div>
+        <ul class="hl-list">
+          <li>Stone streets, villas, palaces, and ports.</li>
+          <li>Constantinople’s courts and mosques.</li>
+          <li>Life inside noble households.</li>
+          <li>Islands, markets, ships, and council halls.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">🎭</span><div class="hl-title">Many Compelling Characters</div></div>
+        <ul class="hl-list">
+          <li>Luka and Lady Ana’s romance.</li>
+          <li>Venetian spies disguised as priests.</li>
+          <li>Noble families and servants with real roles.</li>
+          <li>Lords Ivano and Vjeko making impossible decisions.</li>
+        </ul>
+      </div>
+      <div class="hl-card">
+        <div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, and Legacy</div></div>
+        <ul class="hl-list">
+          <li>Peace instead of tragedy.</li>
+          <li>Preservation of independence.</li>
+          <li>Love rewarded after sacrifice.</li>
+          <li>Humanity can triumph over empire.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -120,7 +210,7 @@
 <section id="dedication">
   <div class="container">
     <h2>Dedication</h2>
-    <div class="card" style="white-space:pre-wrap;">To my late father…</div>
+    <div class="card" style="white-space:pre-wrap;">To my late father. You warned me about my friends, and you were right. They are wild and crazy in the most beautiful ways one can imagine, but I do love them, and I’ve been in good hands all along. Let this book stand as proof of that — and of my love for you. Rest easy, my friend.</div>
   </div>
 </section>
 
@@ -320,7 +410,7 @@
   const params = new URLSearchParams(location.search);
   if (params.get('edit') === '1') enableEditUI(); window.addEventListener('keydown', (e) => { if (e.shiftKey && e.key.toLowerCase()==='e') enableEditUI(); });
 
-  // Admin Upload (passphrase + GitHub token)
+  // Admin Upload
   const ADMIN_KEY = "ragusa 1986";
   const adminBtn = document.getElementById('adminBtn');
   const adminPanel = document.getElementById('adminPanel');
