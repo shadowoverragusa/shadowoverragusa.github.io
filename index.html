@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shadow over Ragusa — Mijo Radalj</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@700;800&family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#121624;--card2:#151a28;--border:#262b36;
@@ -18,7 +18,11 @@ h2{font-family:"Playfair Display",serif;letter-spacing:.3px}
 /* Header */
 header{position:sticky;top:0;z-index:10;background:rgba(10,12,16,.4);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
 header .row{display:flex;gap:12px;align-items:center;padding:10px 0}
-.brand{font-family:"Cinzel Decorative",serif;font-weight:700;letter-spacing:.4px;text-transform:none}
+.brand{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:700;letter-spacing:.2px;
+  text-transform:none !important; font-variant:normal !important;
+}
 nav a{color:inherit;text-decoration:none;padding:10px 14px;border-radius:12px;border:1px solid transparent}
 nav a:hover{border-color:var(--border);background:rgba(255,255,255,.04)}
 /* Hero */
@@ -29,12 +33,12 @@ nav a:hover{border-color:var(--border);background:rgba(255,255,255,.04)}
   radial-gradient(60% 60% at 70% 90%,rgba(215,193,138,.12),transparent 60%)}
 .hero .content{position:relative;z-index:2;padding:30px 0;color:#fff}
 .hero h1{
-  font-family:"Cinzel Decorative",serif;
+  font-family:"Cormorant Garamond",serif;
   font-weight:700;
-  text-transform:none; /* ensure no auto caps */
-  letter-spacing:.4px;
-  font-size:clamp(36px,6.4vw,80px);
-  line-height:1.03;
+  text-transform:none !important; font-variant:normal !important;
+  letter-spacing:.3px;
+  font-size:clamp(36px,6.0vw,78px);
+  line-height:1.05;
   /* engraved gold text effect */
   background:linear-gradient(180deg,#e9dcb2 0%, #c9b074 40%, #a78846 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
