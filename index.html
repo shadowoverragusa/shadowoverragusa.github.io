@@ -1,271 +1,199 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Shadow over Ragusa — Mijo Radalj</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shadow over Ragusa — Official Site</title>
+<meta name="description" content="Shadow over Ragusa is a historical novel set in the Republic of Ragusa. Read the synopsis, author bio, highlights, and an academic analysis in the Harvard tradition." />
+<meta name="author" content="Shadow over Ragusa" />
+
 <style>
-:root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#131722;--border:#262b36;--accent:#e6e8ee;--gold:#d6b980}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-h1,h2{font-family:'Playfair Display',serif;margin:.2rem 0 .75rem}
-.container{max-width:1100px;margin:0 auto;padding:0 16px}
-header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-header .row{display:flex;gap:12px;align-items:center;padding:10px 0}
-nav a{color:inherit;text-decoration:none;padding:10px 14px;border-radius:12px;border:1px solid var(--border)}
-.hero{position:relative;min-height:380px;display:flex;align-items:flex-end;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9) blur(2px)}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.05))}
-.hero .content{position:relative;z-index:2;padding:24px;color:#fff}
-section{padding:44px 0}
-.grid{display:grid;grid-template-columns:1fr;gap:20px}
-@media(min-width:900px){.grid.syn{grid-template-columns:340px 1fr;gap:24px}.grid.about{grid-template-columns:1.05fr 1fr;gap:24px}}
-.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25)}
-.frame{display:inline-block;padding:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);line-height:0}
-.book-cover{max-width:100%;max-height:65vh;object-fit:contain}
-.caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
-#synopsisText::first-letter{float:left;font-family:'Playfair Display',serif;font-size:3rem;line-height:.8;color:var(--gold);padding:8px 10px 0 0}
-.author-box{width:100%;max-width:460px;height:560px;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);box-shadow:0 12px 32px rgba(0,0,0,.25);margin:auto}
-.author-box img{width:100%;height:100%;object-fit:cover}
-.hl-grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:900px){.hl-grid{grid-template-columns:1fr 1fr}}
-.hl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-.hl-head{display:flex;gap:10px;align-items:center;margin-bottom:8px}
-.hl-icon{font-size:20px}.hl-title{font-family:'Playfair Display',serif;font-size:1.1rem}
-.hl-list{margin:8px 0 0;padding-left:18px}.hl-list li{margin:4px 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--accent);color:#0b0d12;font-weight:600;cursor:pointer}
-.btn.secondary{background:var(--card);color:var(--fg)}
-footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padding:28px 0}
-/* Admin */
-#adminBtn{position:fixed;bottom:18px;left:18px;z-index:50;background:#0f141f;color:#fff;border:1px solid var(--border);opacity:.9}
-#adminPanel{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;z-index:60;align-items:center;justify-content:center;padding:16px}
-#adminCard{width:min(980px,96vw);max-height:92vh;overflow:auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.field{display:flex;flex-direction:column;gap:6px;min-width:220px;flex:1}
-.field input[type=text],.field input[type=password]{background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--fg);border-radius:10px;padding:10px}
-.bigUpload{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;border:2px dashed var(--border);border-radius:16px;padding:20px;background:rgba(255,255,255,.03);text-align:center}
-.bigUpload input[type=file]{display:block}
-#list{font-size:14px;max-height:200px;overflow:auto;margin-top:8px}
-.pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:6px 10px;margin:4px;background:rgba(255,255,255,.06)}
-.note{font-size:12px;color:#c9ced8}
-.ok{color:#71e6a0}.warn{color:#f6c05e}.err{color:#ff8a8a}
+  :root{
+    --bg:#0b0f14;
+    --card:#ffffff;
+    --ink:#0e1114;
+    --muted:#5f6b7a;
+    --gold:#caa64a;
+    --accent:#0b5fff;
+    --glow: 0 30px 80px rgba(202,166,74,.25);
+  }
+  /* Page shell */
+  body{margin:0;font-family:ui-serif,Georgia,Cambria,"Times New Roman",serif;background:var(--bg);color:#e9eef5;line-height:1.65}
+  .wrap{max-width:1100px;margin:0 auto;padding:22px}
+  /* Header with soft blur glow */
+  .hero{
+    position:relative;
+    padding:42px 0 18px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:-40px 0 auto 0;height:220px;
+    background:radial-gradient(64% 60% at 40% 35%, rgba(202,166,74,.35), transparent 60%);
+    filter:blur(24px);
+    z-index:-1;
+  }
+  h1,h2,h3{font-weight:700;line-height:1.2;margin:0 0 10px}
+  h1{font-size:2rem}
+  h2{font-size:1.35rem;color:#f4f7fa;margin-top:24px}
+  p{margin:0 0 14px}
+  a{color:#cfe1ff}
+
+  /* Card blocks */
+  .card{
+    background:var(--card);color:var(--ink);
+    border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.18);
+    padding:22px;margin:16px 0;
+  }
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+
+  /* Cover + caption */
+  .cover{
+    width:100%;max-width:420px;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.35)
+  }
+  .caption{
+    font-size:.95rem;color:#334155;margin-top:8px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.06em
+  }
+
+  /* Drop cap styling */
+  .dropcap:first-letter{
+    float:left;font-size:4.2rem;line-height:.9;padding:8px 12px 4px 0;
+    color:var(--gold);font-weight:800;font-family:ui-serif,Georgia,serif;
+  }
+
+  /* Muted label */
+  .label{font-size:.86rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+
+  /* Analysis bits */
+  .notice{
+    background:#fff8e6;color:#4a3b12;border-left:4px solid var(--gold);
+    padding:12px 14px;border-radius:10px;margin:8px 0 16px
+  }
+  .analysis-title{
+    font-size:1.25rem;font-weight:800;margin:10px 0 6px;color:#0d1117
+  }
+
+  /* Highlights list */
+  ul.highlights{margin:10px 0 0 20px;color:#111}
+  ul.highlights li{margin:6px 0}
 </style>
 </head>
 <body>
-<header>
-  <div class="container row">
-    <strong style="font-family:'Playfair Display',serif">Shadow over Ragusa</strong>
-    <nav style="margin-left:auto" class="row">
-      <a href="#hero">Home</a>
-      <a href="#synopsis">Synopsis</a>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  <div class="wrap">
 
-<section id="hero" class="hero">
-  <img id="heroCover" alt="Cover">
-  <div class="veil"></div>
-  <div class="content container">
-    <h1>Shadow over Ragusa</h1>
-    <p>A historical novel about the Republic of Ragusa — how pure love endures under trial.</p>
-  </div>
-</section>
+    <!-- HERO / TITLE -->
+    <section class="hero">
+      <h1>Shadow over Ragusa</h1>
+      <div class="grid">
+        <div>
+          <!-- Replace src with your real cover image path -->
+          <img class="cover" src="assets/cover.jpg" alt="Shadow over Ragusa — cover" />
+          <div class="card" style="margin-top:12px">
+            <div class="caption">Official Cover Art</div>
+          </div>
+        </div>
 
-<section id="synopsis">
-  <div class="container">
-    <h2>Synopsis</h2>
-    <div class="grid syn">
-      <div>
-        <div class="frame"><img id="synopsisCover" class="book-cover" alt="Book Cover"></div>
-        <div class="caption">Front cover — upload as <code>cover.jpg</code> or <code>cover.png</code> to the repo root.</div>
+        <div>
+          <div class="card">
+            <div class="label">Synopsis</div>
+            <p class="dropcap">
+              Centuries ago on the Adriatic, the Republic of Ragusa survives through diplomacy, trade, and the vigilance of its walls. As pressure from Venice grows, a quieter danger rises from within. Inside Villa Marin, the seat of a respected council family, Master of Keys Luka and the capable steward Iva are drawn into a web of secrets after a clandestine visit to Lokrum Island reveals a hidden boat, a golden chain, and a body concealed under broken boards. What begins as a troubling discovery becomes the first thread of a plot that reaches from monastery corridors to the council chamber.
+            </p>
+            <p>
+              The public life of the city moves with ritual and ceremony. The Church speaks. The Admiralty counts ships and cannon. The Council seeks balance under Duke Orlando. Yet behind music in garden evenings and the glow of lanterns at dinner, loyalties bend and strain. Father Marko offers counsel that carries its own shadow. Letters from powerful men across the sea urge alliances that would bind Ragusa. Whispers of figures in red cloaks stir fear along the walls. Luka brings patient watchfulness. Iva brings clear sight and quiet resolve. Their search, carried out among market stalls, harbor steps, and hidden chapels, reveals links between the church, foreign agents, and smugglers who use the coves around Lokrum.
+            </p>
+            <p>
+              Into this rising storm sails Miho Lupina, a young officer whose sense of duty matches the spirit of the city. His arrival gives Iva a fragile counterweight to intrigue and gives the story a tender current of hope. When a public assembly invites citizens to share responsibility for the fate of Ragusa, Miho makes a vow to serve. That vow binds private feeling to civic duty and asks what a free city requires from those who love it. The answer is discreet service, restraint, and when the hour comes, courage.
+            </p>
+            <p>
+              Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic that stands tall among empires. Without revealing the final turns, the story carries Iva, Luka, and Miho from a single hidden crime to revelations that test friendship, unmask betrayal, and reveal where faith, family, and freedom truly meet. Across stone alleys and sun struck rooftops, the novel honors a city that survives through wit rather than force and the people whose private loyalties make public liberty possible.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="label">Author Bio</div>
+            <p class="dropcap">
+              Mijo Radalj is the author of Shadow over Ragusa, a historical novel set in Dubrovnik during the age of merchant fleets and careful diplomacy. His work explores the life of small republics, the ethics of freedom, and the quiet courage of ordinary people. He writes with a focus on vivid place, moral choice, and the meeting point of private love and public duty. When not at his desk, he studies the archives and the shoreline that shaped the story of Ragusa.
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="card" id="synopsisText" style="white-space:pre-wrap;">
-Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin seat of a respected council family—Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
+    </section>
 
-The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear-eyed resolve become the Republic’s quiet instruments. Their investigation—carried out between market stalls, harbor steps, and hidden chapels—uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
-
-Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue—and the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
-
-Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun-struck rooftops, the novel celebrates a city that survives by wit over force—and the people whose private loyalties make public liberty possible.
+    <!-- HIGHLIGHTS -->
+    <section id="highlights">
+      <div class="card">
+        <div class="label">Highlights of the Book</div>
+        <ul class="highlights">
+          <li>A vivid portrait of the Republic of Ragusa and its civic life.</li>
+          <li>A mystery that begins with a hidden crime and widens into state intrigue.</li>
+          <li>Characters whose private loyalties shape public liberty.</li>
+          <li>Romance, duty, and the cost of freedom.</li>
+        </ul>
       </div>
-    </div>
-  </div>
-</section>
 
-<section id="highlights">
-  <div class="container">
-    <h2>Highlights — Why this book is special</h2>
-    <div class="hl-grid">
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div><ul class="hl-list"><li>A small but powerful maritime republic.</li><li>Diplomacy & survival between Venice and the Ottomans.</li><li>Architecture, customs, salt trade, noble families.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">A Love Story Built on Loyalty</div></div><ul class="hl-list"><li>Pure and true—not scandalous.</li><li>Tested by war, faith, politics.</li><li>Emotionally human, noble, timeless.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">A Strong Female Lead</div></div><ul class="hl-list"><li>Iva is brave, clever, principled.</li><li>Not royalty, yet central to history.</li><li>Acts rather than waits to be saved.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">⚔</span><div class="hl-title">Epic Stakes, Human Hearts</div></div><ul class="hl-list"><li>Love & devotion amid espionage.</li><li>War, betrayal, faith, survival.</li><li>Diplomacy instead of conquest.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🌍</span><div class="hl-title">Coexistence & Cultural Respect</div></div><ul class="hl-list"><li>East and West find understanding.</li><li>Conversion as sacrifice for peace.</li><li>Love across culture & empire.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🏰</span><div class="hl-title">Rich Worldbuilding & Atmosphere</div></div><ul class="hl-list"><li>Stone streets, villas, palaces, ports.</li><li>Constantinople’s courts & mosques.</li><li>Noble households and harbor life.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🎭</span><div class="hl-title">Multiple Compelling Characters</div></div><ul class="hl-list"><li>Luka and Lady Ana’s romance.</li><li>Venetian spies disguised as priests.</li><li>Lords Ivano and Vjeko’s decisions.</li></ul></div>
-      <div class="hl-card"><div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, and Legacy</div></div><ul class="hl-list"><li>Peace over tragedy.</li><li>Independence preserved.</li><li>Love rewarded after sacrifice.</li></ul></div>
-    </div>
-  </div>
-</section>
+      <!-- ANALYSIS DISCLOSURE + TITLE + BODY (PLACED UNDER HIGHLIGHTS) -->
+      <div class="card">
+        <div class="notice">
+          <strong>About the Analysis</strong><br />
+          This analysis was created with the assistance of Perplexity AI using an academic approach modeled on Harvard style literary methodology. It is an interpretive overview and not an official publication or statement of Harvard University. The text is provided to offer readers a structured perspective on the themes, characters, and historical context of the novel.
+        </div>
 
-<section id="about">
-  <div class="container">
-    <h2>About the Author</h2>
-    <div class="grid about">
-      <div class="author-box"><img id="authorImg" alt="Author photo"></div>
-      <div class="card" id="bioText" style="white-space:pre-wrap;">
-Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books shaped by memory, rumor, and place sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front row seat to temperaments and relationships that later inspired characters. What started as a light, just-for-fun idea grew into a full-length historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth.
+        <div class="analysis-title">Shadow over Ragusa: A Harvard Model Literary Examination</div>
+
+        <h2>Overview</h2>
+        <p>
+          The novel is a sweeping historical epic. Analyzing it from a Harvard standpoint involves a rigorous, multi dimensional approach focusing on narrative structure, thematic exploration, character development, contextual relevance, and critical evaluation framed by scholarly methodology and citation practice.
+        </p>
+
+        <h2>Thematic Analysis</h2>
+        <p>
+          The novel intricately explores themes such as political intrigue, liberty, diplomacy, cultural identity, and love amidst the turbulence of early modern Dalmatia. The Republic of Ragusa, balancing on the edge of Venetian aggression, becomes a canvas for exploring collective resilience and individual agency. These themes are structured through the daily lives, relationships, and moral dilemmas of central characters like Iva, Lady Maria, Lord Marin, and naval officer Miho.
+        </p>
+
+        <h2>Narrative Technique</h2>
+        <p>
+          The narrative uses a rich, immersive style with vivid atmospheric detail, engaging the reader in a reconstruction of the past. The omniscient perspective interweaves multiple points of view, enhancing both historical world building and psychological depth. The pacing blends domestic detail with high stakes political maneuvers and personal risk, aligning with the Harvard convention favoring close reading of both thematic content and stylistic choice.
+        </p>
+
+        <h2>Character Development</h2>
+        <p>
+          Central characters transcend mere archetype. Iva Lukitcheva in particular is rendered with complexity as servant, confidante, and independent spirit. Her arc reflects both individual growth and societal change. The relationships among the Marin family, council members, and key figures like Lady Ana and Miho provide a matrix for examining loyalty, identity, and sacrifice. Dialogues and internal monologues contribute nuance, a hallmark of analytical rigor expected in Harvard literary analysis.
+        </p>
+
+        <h2>Historical and Cultural Context</h2>
+        <p>
+          Harvard methodology emphasizes situating a text within its broader historical and cultural context. The novel recreates the socio political realities of Dubrovnik. It draws on real institutions such as the ducal council, trade networks, and religious tensions, embedding them within character experience. This enables a robust discussion of the tension between republican values and external imperial threats, as well as the cross cultural interactions with Ottoman and Venetian worlds.
+        </p>
+
+        <h2>Narratological Gaps and Contradictions</h2>
+        <p>
+          Attention is drawn to unresolved mysteries, hidden motives, and ambiguous loyalties. Secret notes, concealed bodies, and reluctant revelations propel the story while inviting scholarly inquiry into narrative ambiguity and its interpretive possibilities.
+        </p>
+
+        <h2>Structure and Academic Rigor</h2>
+        <p>
+          The book exemplifies extended, interconnected plotting and thematic layering. Analyzing this requires a logical, well organized structure with introduction, synthesis of sources and content, and critical evaluation framed with rigorous author date referencing when comparing to scholarship or historical sources.
+        </p>
+
+        <h2>Conclusion and Scholarly Implications</h2>
+        <p>
+          Viewed through Harvard tradition, the novel stands as both a compelling historical narrative and a rich subject for advanced literary and historical critique. Its nuanced characterization, historical fidelity, and exploration of conflict and identity recommend it for further academic engagement, especially concerning small state resilience, cross cultural diplomacy, and the meeting of private lives with public history.
+        </p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="dedication">
-  <div class="container">
-    <h2>Dedication</h2>
-    <div class="card" style="white-space:pre-wrap;">
-To my late father. You warned me about my friends, and you were right. They are wild and crazy in the most beautiful ways one can imagine, but I do love them, and I’ve been in good hands all along. Let this book stand as proof of that — and of my love for you. Rest easy, my friend.
-    </div>
-  </div>
-</section>
-
-<section id="gallery">
-  <div class="container">
-    <h2>Gallery</h2>
-    <div class="card" id="galleryCard">
-      <p class="note">Click <b>Admin</b> (bottom-left), enter your key, then use the big <b>Upload images</b> button below.</p>
-      <div id="thumbs" class="hl-grid"></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="card">
-      <button class="btn secondary" id="mailBtn">Write me</button>
-      <p class="note">Opens your email app; address is not visible on the page.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-    <div>© <span id="year"></span> Mijo Radalj</div>
-    <div>Built with ♥ — static site</div>
-  </div>
-</footer>
-
-<!-- ADMIN -->
-<button id="adminBtn" class="btn">Admin</button>
-<div id="adminPanel">
-  <div id="adminCard">
-    <h2 style="margin:.2rem 0 .6rem">Admin — Upload to Gallery</h2>
-    <p class="note">Enter admin key, then choose images and click Upload. Images are pushed to your GitHub repository.</p>
-    <div class="row">
-      <div class="field">
-        <label>Admin key</label>
-        <input type="password" id="adminKey" placeholder="ragusa 1986">
+    <!-- GALLERY placeholder (we add later) -->
+    <!--
+    <section id="gallery">
+      <div class="card">
+        <div class="label">Gallery</div>
+        <p>We will add a simple thumbnail gallery here later. For now, upload images to assets/gallery/ and we will wire it up when you say go.</p>
       </div>
-      <div class="field">
-        <label>GitHub token (contents: read/write)</label>
-        <input type="password" id="ghToken" placeholder="paste token once">
-      </div>
-    </div>
-    <div class="bigUpload">
-      <input type="file" id="fileInput" accept="image/*" multiple>
-      <button class="btn" id="uploadBtn">Upload to Gallery</button>
-      <div id="list"></div>
-      <div id="status" class="pill">Waiting…</div>
-    </div>
-    <p class="note">Files will be named <code>gallery-N.ext</code> and <code>gallery.json</code> will be updated automatically.</p>
-    <div class="row" style="margin-top:10px"><button class="btn secondary" id="closeAdmin">Close</button></div>
+    </section>
+    -->
+
   </div>
-</div>
-
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
-document.getElementById('mailBtn').addEventListener('click',()=>{location.href='mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa';});
-
-// Load cover/author images
-const coverFiles=['cover.jpg','cover.png','cover.jpg.png'];
-const authorFiles=['author.jpg','author.png','author.jpg.png','author%20.jpg.png'];
-function tryLoad(el, arr){let i=0;const base=location.origin+'/';(function next(){if(i>=arr.length)return;el.onerror=()=>{i++;next();};el.src=base+arr[i];})();}
-tryLoad(document.getElementById('heroCover'),coverFiles);
-tryLoad(document.getElementById('synopsisCover'),coverFiles);
-tryLoad(document.getElementById('authorImg'),authorFiles);
-
-// Render thumbs (from gallery.json or numbered files)
-const thumbs=document.getElementById('thumbs');
-async function loadGallery(){
-  let list=[];
-  try{const r=await fetch('gallery.json',{cache:'no-store'});if(r.ok){const j=await r.json();list=(j.images||[]);} }catch(e){}
-  // Fallback: numbered
-  if(!list.length){for(let n=1;n<=200;n++){for(const ext of ['jpg','jpeg','png','webp']){const url=`gallery-${n}.${ext}`;const img=new Image();img.onload=()=>{list.push(url);render(list)};img.onerror=()=>{};img.src=url;}}}
-  render(list);
-}
-function render(list){
-  thumbs.innerHTML='';
-  list.forEach(src=>{const d=document.createElement('div');d.className='hl-card';const i=document.createElement('img');i.src=src;i.style.width='100%';i.style.borderRadius='10px';d.appendChild(i);thumbs.appendChild(d);});
-}
-loadGallery();
-
-// ADMIN
-const ADMIN_PASS='ragusa 1986';
-const adminBtn=document.getElementById('adminBtn');
-const adminPanel=document.getElementById('adminPanel');
-const closeAdmin=document.getElementById('closeAdmin');
-const adminKey=document.getElementById('adminKey');
-const ghToken=document.getElementById('ghToken');
-const fileInput=document.getElementById('fileInput');
-const uploadBtn=document.getElementById('uploadBtn');
-const listEl=document.getElementById('list');
-const statusEl=document.getElementById('status');
-
-adminBtn.addEventListener('click',()=>{adminPanel.style.display='flex';});
-closeAdmin.addEventListener('click',()=>{adminPanel.style.display='none';});
-
-let files=[];
-fileInput.addEventListener('change',()=>{files=[...fileInput.files];listEl.innerHTML=files.map(f=>`<span class='pill'>${f.name} (${Math.round(f.size/1024)} KB)</span>`).join('');});
-
-function headers(token){return {'Authorization':'token '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};}
-async function listRoot(token){const r=await fetch('https://api.github.com/repos/shadowoverragusa/shadowoverragusa.github.io/contents?ref=main',{headers:headers(token)});if(!r.ok)throw new Error('List failed');return r.json();}
-async function putFile(path,b64,msg,token,sha){const body={message:msg,content:b64,branch:'main'};if(sha)body.sha=sha;const r=await fetch('https://api.github.com/repos/shadowoverragusa/shadowoverragusa.github.io/contents/'+encodeURIComponent(path),{method:'PUT',headers:headers(token),body:JSON.stringify(body)});if(!r.ok)throw new Error('Upload failed: '+r.status);return r.json();}
-function toB64(file){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const b64=btoa(String.fromCharCode(...new Uint8Array(fr.result)));res(b64);};fr.onerror=rej;fr.readAsArrayBuffer(file);});}
-
-async function nextIndex(token){try{const items=await listRoot(token);const nums=items.map(it=>it.name).map(n=>(n.match(/^gallery-(\d+)\./)||[])[1]).filter(Boolean).map(x=>parseInt(x,10));return (nums.length?Math.max(...nums):0)+1;}catch(e){return 1;}}
-
-uploadBtn.addEventListener('click', async ()=>{
-  try{
-    if(adminKey.value.trim()!==ADMIN_PASS){alert('Wrong admin key');return;}
-    if(!files.length){alert('Choose image(s)');return;}
-    const token=ghToken.value.trim(); if(!token){alert('Paste your GitHub token');return;}
-    statusEl.textContent='Uploading…'; statusEl.className='pill warn';
-    let n=await nextIndex(token);
-    const added=[];
-    let manifest={images:[]}, sha=null;
-    try{const r=await fetch('https://api.github.com/repos/shadowoverragusa/shadowoverragusa.github.io/contents/gallery.json?ref=main',{headers:headers(token)});if(r.ok){const j=await r.json();manifest=JSON.parse(atob(j.content));sha=j.sha;}}catch(e){}
-    for(const f of files){
-      const ext=(f.name.split('.').pop()||'jpg').toLowerCase();
-      const name=`gallery-${n++}.${ext}`;
-      const b64=await toB64(f);
-      await putFile(name,b64,'Add image '+name,token);
-      added.push(name);
-      statusEl.textContent='Uploaded '+name; statusEl.className='pill ok';
-    }
-    manifest.images=(manifest.images||[]).concat(added);
-    const manifestB64=btoa(unescape(encodeURIComponent(JSON.stringify(manifest,null,2))));
-    await putFile('gallery.json',manifestB64,'Update gallery.json',token,sha);
-    statusEl.textContent='Done: '+added.length+' file(s)'; statusEl.className='pill ok';
-    alert('Upload complete. Refresh the page.');
-  }catch(e){
-    statusEl.textContent='Error: '+e.message; statusEl.className='pill err';
-    alert(e.message);
-  }
-});
-</script>
 </body>
 </html>
