@@ -4,44 +4,70 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shadow over Ragusa — Mijo Radalj</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#131722;--border:#262b36;--accent:#e6e8ee;--gold:#d6b980}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-h1,h2{font-family:"Playfair Display",serif;margin:.2rem 0 .75rem}
-.container{max-width:1100px;margin:0 auto;padding:0 16px}
-header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+:root{
+  --bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#121624;--card2:#151a28;--border:#262b36;
+  --accent:#e6e8ee;--gold:#d7c18a;--gold-d:#bfa96f;--ink:#0a0c10
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+h1,h2{margin:.2rem 0 .75rem}
+h2{font-family:"Playfair Display",serif;letter-spacing:.3px}
+.container{max-width:1120px;margin:0 auto;padding:0 16px}
+/* Header */
+header{position:sticky;top:0;z-index:10;background:rgba(10,12,16,.4);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
 header .row{display:flex;gap:12px;align-items:center;padding:10px 0}
-nav a{color:inherit;text-decoration:none;padding:10px 14px;border-radius:12px;border:1px solid var(--border)}
-.hero{position:relative;min-height:420px;display:flex;align-items:flex-end;overflow:hidden}
+.brand{font-family:"Cinzel",serif;font-weight:800;letter-spacing:.6px}
+nav a{color:inherit;text-decoration:none;padding:10px 14px;border-radius:12px;border:1px solid transparent}
+nav a:hover{border-color:var(--border);background:rgba(255,255,255,.04)}
+/* Hero */
+.hero{position:relative;min-height:440px;display:flex;align-items:flex-end;overflow:hidden}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.9) blur(2px)}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,.05))}
-.hero .content{position:relative;z-index:2;padding:24px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-section{padding:48px 0}
+.hero .veil{position:absolute;inset:0;background:
+  linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.1)),
+  radial-gradient(60% 60% at 70% 90%,rgba(215,193,138,.15),transparent 60%)}
+.hero .content{position:relative;z-index:2;padding:28px 0;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.hero h1{
+  font-family:"Cinzel",serif;font-weight:800;
+  font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:.5px
+}
+.hero h1::after{
+  content:"";display:block;width:140px;height:3px;margin:10px 2px 0;
+  background:linear-gradient(90deg,var(--gold),transparent);border-radius:3px;box-shadow:0 0 24px rgba(215,193,138,.45)
+}
+.hero p{font-size:clamp(16px,2.2vw,20px);opacity:.95;margin-top:8px}
+/* Sections */
+section{padding:52px 0}
 .grid{display:grid;grid-template-columns:1fr;gap:20px}
-@media(min-width:900px){.grid.syn{grid-template-columns:360px 1fr;gap:24px}.grid.about{grid-template-columns:1.05fr 1fr;gap:24px}}
-.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25)}
+@media(min-width:900px){.grid.syn{grid-template-columns:360px 1fr;gap:26px}.grid.about{grid-template-columns:1.05fr 1fr;gap:26px}}
+.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25)}
 .frame{display:inline-block;padding:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);line-height:0}
 .book-cover{max-width:100%;max-height:65vh;object-fit:contain;display:block}
 .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
-#synopsisText::first-letter{float:left;font-family:"Playfair Display",serif;font-size:3rem;line-height:.8;color:var(--gold);padding:8px 10px 0 0}
-.author-box{width:100%;max-width:500px;height:600px;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);box-shadow:0 12px 32px rgba(0,0,0,.25);margin:auto}
+#synopsisText::first-letter{float:left;font-family:"Playfair Display",serif;font-size:3rem;line-height:.8;color:var(--gold);padding:8px 10px 0 0;text-shadow:0 0 0 rgba(0,0,0,0)}
+.author-box{width:100%;max-width:520px;height:620px;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);box-shadow:0 12px 32px rgba(0,0,0,.25);margin:auto}
 .author-box img{width:100%;height:100%;object-fit:cover}
+/* Highlights */
 .hl-grid{display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:900px){.hl-grid{grid-template-columns:1fr 1fr}}
-.hl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px}
+.hl-card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:18px;transition:transform .15s ease, box-shadow .15s ease}
+.hl-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.28)}
 .hl-head{display:flex;gap:10px;align-items:center;margin-bottom:8px}
 .hl-icon{font-size:20px}.hl-title{font-family:"Playfair Display",serif;font-size:1.1rem}
 .hl-list{margin:8px 0 0;padding-left:18px}.hl-list li{margin:4px 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--accent);color:#0b0d12;font-weight:600;cursor:pointer}
-.btn.secondary{background:var(--card);color:var(--fg)}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--accent);color:var(--ink);font-weight:600;cursor:pointer}
+.btn.secondary{background:linear-gradient(180deg,var(--card),var(--card2));color:var(--fg)}
+.btn.secondary:hover{filter:brightness(1.05)}
+/* Footer */
 footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padding:28px 0}
 </style>
 </head>
 <body>
 <header>
   <div class="container row">
-    <strong style="font-family:'Playfair Display',serif">Shadow over Ragusa</strong>
+    <strong class="brand">Shadow over Ragusa</strong>
     <nav style="margin-left:auto" class="row">
       <a href="#hero">Home</a>
       <a href="#synopsis">Synopsis</a>
@@ -62,7 +88,7 @@ footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padd
   </div>
 </section>
 
-<!-- SYNOPSIS (book cover + text) -->
+<!-- SYNOPSIS -->
 <section id="synopsis">
   <div class="container">
     <h2>Synopsis</h2>
@@ -74,7 +100,7 @@ footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padd
       <div class="card" id="synopsisText" style="white-space:pre-wrap;">
 Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin, the seat of a respected council family, Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
-The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear-eyed resolve become the Republic’s quiet instruments. Their investigation, carried out between market stalls, harbor steps, and hidden chapels, uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
+The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red‑cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear‑eyed resolve become the Republic’s quiet instruments. Their investigation, carried out between market stalls, harbor steps, and hidden chapels, uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
 
 Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue and gives the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
 
@@ -84,7 +110,7 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   </div>
 </section>
 
-<!-- HIGHLIGHTS (NO DASHES) -->
+<!-- HIGHLIGHTS -->
 <section id="highlights">
   <div class="container">
     <h2>Highlights: Why this book is special</h2>
@@ -101,7 +127,7 @@ Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a
   </div>
 </section>
 
-<!-- ABOUT (large author image + bio) -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <h2>About the Author</h2>
@@ -124,7 +150,7 @@ To my late father. You warned me about my friends, and you were right. They are 
   </div>
 </section>
 
-<!-- GALLERY (auto-loads any files in /gallery) -->
+<!-- GALLERY -->
 <section id="gallery">
   <div class="container">
     <h2>Gallery</h2>
