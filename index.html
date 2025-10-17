@@ -262,6 +262,28 @@ tryLoad(document.getElementById('synopsisCover'),coverFiles);
   margin:4px 12px 0 0;
 }
 </style>
+  <script>
+/* AUTHOR photo loader (tries multiple filenames) */
+(function(){
+  const el = document.querySelector('#about img[alt="Author photo"]');
+  if(!el) return;
+  const candidates = ['author.jpg','author.jpeg','author.png','author.JPG','author.JPEG','author.PNG','author.jpg.png'];
+  let i = 0;
+  function tryNext(){
+    if(i >= candidates.length){ el.alt = 'Author photo missing'; return; }
+    const test = new Image();
+    test.onload = () => { el.src = candidates[i]; };
+    test.onerror = () => { i++; tryNext(); };
+    test.src = candidates[i];
+  }
+  // If the initial src fails, fall back to the list
+  el.addEventListener('error', function onErr(){
+    el.removeEventListener('error', onErr);
+    tryNext();
+  }, { once:true });
+})();
+</script>
+
 
 </body>
 </html>
