@@ -142,6 +142,29 @@ What started as a light, just-for-fun idea grew into a full historical novel. *S
   </div>
 </div></section>
 
+<!-- ABOUT -->
+<section id="about"><div class="container">
+  <h2>About the Author</h2>
+  <div style="display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start;max-width:980px">
+    <div class="frame" style="width:260px;border-radius:18px;overflow:hidden">
+      <img src="author.jpg" alt="Author photo"
+           style="display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:1/1"
+           onerror="this.onerror=null;this.src='author.png'">
+    </div>
+    <div class="card" id="authorBio" style="white-space:pre-wrap">
+Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books—shaped by memory, rumor, and place—sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front-row seat to temperaments and relationships that later inspired characters.
+
+What started as a light, just-for-fun idea grew into a full historical novel. *Shadow over Ragusa* is the result: a work born of lived experience and the spaces between history and myth.
+    </div>
+  </div>
+</div></section>
+<!-- DEDICATION -->
+<section id="dedication"><div class="container">
+  <h2>Dedication</h2>
+  <div class="card" style="white-space:pre-wrap">
+To my late father — you warned me about my friends, and you were right. They’re crazy in all the ways you imagined, but I love them, and I’ve been in good hands all along. Let this book stand as proof of that — and of you. Rest easy.
+  </div>
+</div></section>
 
 <section id="gallery"><div class="container">
   <h2>Gallery</h2>
@@ -225,5 +248,16 @@ function tryLoad(el, files){
 tryLoad(document.getElementById('heroCover'),coverFiles);
 tryLoad(document.getElementById('synopsisCover'),coverFiles);
 </script>
+  <style>
+#synopsisText::first-letter{
+  float:left; display:block;
+  font-family:"Playfair Display",serif; font-weight:700;
+  font-size:4.8rem !important; line-height:.78 !important;
+  color:#d7c18a !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.15), 0 6px 16px rgba(0,0,0,.35) !important;
+  margin:4px 12px 0 0 !important;
+}
+</style>
+
 </body>
 </html>
