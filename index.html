@@ -52,19 +52,6 @@ section{padding:52px 0}
 .frame{display:inline-block;padding:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);line-height:0}
 .book-cover{max-width:100%;max-height:65vh;object-fit:contain;display:block}
 .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
-
-/* BIG GOLD DROP CAP — updated per your request */
-#synopsisText::first-letter{
-  float:left;
-  font-family:"Playfair Display",serif;
-  font-weight:700;
-  font-size:4.2rem;     /* bigger drop cap */
-  line-height:.78;
-  color:var(--gold);    /* gold tone */
-  text-shadow:0 1px 0 rgba(255,255,255,.15), 0 6px 16px rgba(0,0,0,.35);
-  margin:4px 12px 0 0;  /* spacing from text */
-}
-
 .hl-grid{display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:900px){.hl-grid{grid-template-columns:1fr 1fr}}
 .hl-card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:18px;transition:transform .15s ease, box-shadow .15s ease}
@@ -106,7 +93,7 @@ footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padd
   <div class="grid syn">
     <div><div class="frame"><img id="synopsisCover" class="book-cover" alt="Book Cover"></div>
       <div class="caption">Upload <code>cover.jpg</code> or <code>cover.png</code> to the repo root.</div></div>
-    <div class="card" id="synopsisText" style="white-space:pre-wrap;">
+    <div class="card"><p id="synopsisText" style="white-space:pre-wrap; margin:0;">
 Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marin, the seat of a respected council family, Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
 The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannon, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red‑cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear‑eyed resolve become the Republic’s quiet instruments. Their investigation, carried out between market stalls, harbor steps, and hidden chapels, uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
@@ -114,7 +101,7 @@ The city’s political heart beats to ritual and ceremony: the Church speaks, th
 Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue and gives the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
 
 Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun‑struck rooftops, the novel celebrates a city that survives by wit over force, and the people whose private loyalties make public liberty possible.
-    </div>
+    </p></div>
   </div>
 </div></section>
 
@@ -186,6 +173,21 @@ Viewed through Harvard tradition, the novel stands as both a compelling historic
   <div>© <span id="year"></span> Mijo Radalj</div><div>Built with ♥ — static site</div>
 </div></footer>
 
+<!-- Put the drop-cap CSS at the very end to ensure it wins -->
+<style>
+.card #synopsisText:first-letter,
+.card #synopsisText::first-letter{
+  float:left !important;
+  font-family:"Playfair Display",serif !important;
+  font-weight:700 !important;
+  font-size:4.4rem !important;
+  line-height:.78 !important;
+  color:var(--gold) !important;
+  text-shadow:0 1px 0 rgba(255,255,255,.15), 0 6px 16px rgba(0,0,0,.35) !important;
+  margin:4px 12px 0 0 !important;
+}
+</style>
+
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 document.getElementById('mailBtn').addEventListener('click',()=>{location.href='mailto:mijo.radalj@gmail.com?subject=Shadow%20over%20Ragusa';});
@@ -197,29 +199,6 @@ function tryLoad(el, files){
 }
 tryLoad(document.getElementById('heroCover'),coverFiles);
 tryLoad(document.getElementById('synopsisCover'),coverFiles);
-
-async function listGallery(){
-  const url='https://api.github.com/repos/shadowoverragusa/shadowoverragusa.github.io/contents/gallery?ref=main';
-  try{
-    const r=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});
-    if(!r.ok) throw 0;
-    const items=await r.json();
-    const imgs=items.filter(it=>it.type==='file' && /\.(jpg|jpeg|png|webp|gif)$/i.test(it.name));
-    const raw='https://raw.githubusercontent.com/shadowoverragusa/shadowoverragusa.github.io/main/gallery/';
-    return imgs.map(it=>raw+encodeURIComponent(it.name));
-  }catch(e){ return []; }
-}
-function renderGallery(srcs){
-  const grid=document.getElementById('thumbs');
-  grid.innerHTML='';
-  if(!srcs.length){ grid.innerHTML='<div class="card">No images yet. Create a <code>gallery</code> folder and upload files.</div>'; return; }
-  srcs.forEach(src=>{
-    const d=document.createElement('div'); d.className='hl-card';
-    const i=document.createElement('img'); i.src=src; i.style.width='100%'; i.style.borderRadius='10px';
-    d.appendChild(i); grid.appendChild(d);
-  });
-}
-(async ()=>{ renderGallery(await listGallery()); })();
 </script>
 </body>
 </html>
