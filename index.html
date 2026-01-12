@@ -1,102 +1,340 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <title>Shadow over Ragusa — Mijo Radalj</title>
+<meta name="description" content="A sweeping historical novel set in the Republic of Ragusa (Dubrovnik): love, loyalty, and a city standing tall among empires.">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<!-- Open Graph -->
+<meta property="og:title" content="Shadow over Ragusa — Mijo Radalj">
+<meta property="og:description" content="A sweeping historical novel set in the Republic of Ragusa (Dubrovnik): love, loyalty, and a city standing tall among empires.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shadowoverragusa.github.io/">
+<meta property="og:image" content="https://shadowoverragusa.github.io/cover.jpg">
+<meta property="og:image:alt" content="Shadow over Ragusa — cover">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadow over Ragusa — Mijo Radalj">
+<meta name="twitter:description" content="A sweeping historical novel set in the Republic of Ragusa (Dubrovnik): love, loyalty, and a city standing tall among empires.">
+<meta name="twitter:image" content="https://shadowoverragusa.github.io/cover.jpg">
+
+<link rel="icon" href="/cover.jpg"/>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@700&family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  background:#0b0d12;
-  color:#f3f5f7;
-  font-family:Inter,system-ui,Arial,sans-serif;
-}
+  :root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#121624;--card2:#151a28;--border:#262b36;--gold:#d7c18a}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+  h1,h2{margin:.2rem 0 .75rem}
+  h2{font-family:"Playfair Display",serif;letter-spacing:.3px}
+  .container{max-width:1120px;margin:0 auto;padding:0 16px}
+  header{position:sticky;top:0;z-index:10;background:rgba(10,12,16,.4);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  header .row{display:flex;gap:12px;align-items:center;padding:10px 0}
+  .brand{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.2px}
+  nav a{color:inherit;text-decoration:none;padding:10px 14px;border-radius:12px;border:1px solid transparent}
+  nav a:hover{border-color:var(--border);background:rgba(255,255,255,.04)}
 
-header{
-  padding:16px;
-  border-bottom:1px solid #262b36;
-}
+  .hero{position:relative;min-height:460px;display:flex;align-items:flex-end;overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.96)}
+  .hero .veil{position:absolute;inset:0;background:
+    linear-gradient(to top,rgba(0,0,0,.66),rgba(0,0,0,.08)),
+    radial-gradient(60% 60% at 70% 90%,rgba(215,193,138,.10),transparent 60%)}
+  .hero .content{position:relative;z-index:2;padding:30px 0;color:#fff}
 
-header strong{
-  font-size:18px;
-}
+  /* TITLE: Cinzel + silver, same position */
+  .hero h1{
+    font-family:"Cinzel",serif;
+    font-weight:600;
+    text-transform:none;
+    letter-spacing:1.2px;
+    font-size:clamp(36px,6vw,78px);
+    line-height:1.05;
+    color:#c0c0c0;
+    text-shadow:0 1px 0 rgba(255,255,255,.12),0 6px 18px rgba(0,0,0,.45), 0 2px 14px rgba(0,0,0,.55);
+  }
 
-.hero{
-  padding:80px 16px;
-  text-align:center;
-}
+  .hero h1::after{content:"";display:block;width:150px;height:3px;margin:12px 2px 0;
+    background:linear-gradient(90deg,var(--gold),transparent);border-radius:3px;box-shadow:0 0 24px rgba(215,193,138,.35)}
+  .hero p{font-size:clamp(16px,2.2vw,20px);opacity:.95;margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
 
-.hero h1{
-  font-family:Cinzel,serif;
-  font-size:64px;
-  letter-spacing:1.2px;
-  color:#c0c0c0;
-  margin:0 0 16px 0;
-  text-shadow:0 2px 12px rgba(0,0,0,.6);
-}
+  section{padding:52px 0}
+  .grid{display:grid;grid-template-columns:1fr;gap:20px}
+  @media(min-width:900px){.grid.syn{grid-template-columns:360px 1fr;gap:26px}}
 
-.hero p{
-  font-size:18px;
-  max-width:700px;
-  margin:0 auto;
-  opacity:.9;
-}
+  .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 12px 36px rgba(0,0,0,.25)}
+  .frame{display:inline-block;padding:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.02);line-height:0}
+  .book-cover{max-width:100%;max-height:65vh;object-fit:contain;display:block}
+  .caption{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
 
-section{
-  max-width:900px;
-  margin:0 auto;
-  padding:48px 16px;
-}
+  .hl-grid{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.hl-grid{grid-template-columns:1fr 1fr}}
+  .hl-card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:16px;padding:18px;transition:transform .15s ease, box-shadow .15s ease}
+  .hl-card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.28)}
+  .hl-head{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+  .hl-icon{font-size:20px}
+  .hl-title{font-family:"Playfair Display",serif;font-size:1.1rem}
+  .hl-list{margin:8px 0 0;padding-left:18px}
+  .hl-list li{margin:4px 0}
 
-.card{
-  background:#121624;
-  border:1px solid #262b36;
-  border-radius:16px;
-  padding:24px;
-}
+  .note-card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px dashed var(--border);border-radius:16px;padding:18px;margin-top:18px}
+  .note-card h3{font-family:"Playfair Display",serif;margin:0 0 8px}
+  .note-card .muted{color:var(--muted);font-size:14px}
 
-a{color:#c0c0c0}
+  footer{border-top:1px solid var(--border);color:var(--muted);font-size:14px;padding:28px 0}
+
+  .btn{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:10px 14px;border-radius:12px;cursor:pointer}
+  .btn:hover{background:rgba(255,255,255,.04)}
+
+  /* Golden drop cap for first paragraph of synopsis */
+  .card #synopsisText:first-letter,
+  .card #synopsisText::first-letter{
+    float:left !important;
+    font-family:"Playfair Display",serif !important;
+    font-weight:700 !important;
+    font-size:4.4rem !important;
+    line-height:.78 !important;
+    color:var(--gold) !important;
+    text-shadow:0 1px 0 rgba(255,255,255,.15), 0 6px 16px rgba(0,0,0,.35) !important;
+    margin:4px 12px 0 0 !important;
+  }
 </style>
 </head>
-
 <body>
 
 <header>
-  <strong>Shadow over Ragusa</strong>
+  <div class="container row">
+    <strong class="brand">Shadow over Ragusa</strong>
+    <nav style="margin-left:auto" class="row">
+      <a href="#hero">Home</a>
+      <a href="#synopsis">Synopsis</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<div class="hero">
-  <h1>Shadow over Ragusa</h1>
-  <p>
-    A historical novel set in the Republic of Ragusa, where diplomacy,
-    loyalty, and love endure under pressure from empires.
-  </p>
-</div>
-
-<section>
-  <div class="card">
-    <h2>Synopsis</h2>
-    <p>
-      Centuries ago on the Adriatic, the Republic of Ragusa survives by wit,
-      trade, and restraint. When a hidden crime on Lokrum Island reveals
-      foreign intrigue, a household steward and a city official uncover a
-      conspiracy that threatens the city’s fragile independence.
-    </p>
+<!-- HERO -->
+<section id="hero" class="hero">
+  <img id="heroCover" alt="Cover">
+  <div class="veil"></div>
+  <div class="content container">
+    <h1>Shadow over Ragusa</h1>
+    <p>A historical novel set in the Republic of Ragusa, where pure love endures all trials and tribulations.</p>
   </div>
 </section>
 
-<section>
-  <div class="card">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:mijo.radalj@gmail.com">mijo.radalj@gmail.com</a></p>
-    <p>Website: https://shadowoverragusa.github.io</p>
-  </div>
-</section>
+<!-- SYNOPSIS -->
+<section id="synopsis"><div class="container">
+  <h2>Synopsis</h2>
+  <div class="grid syn">
+    <div>
+      <div class="frame"><img id="synopsisCover" class="book-cover" alt="Book Cover"></div>
+      <div class="caption">Cover art</div>
+    </div>
+    <div class="card">
+      <p id="synopsisText" style="white-space:pre-wrap; margin:0;">
+Centuries ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marinowhitch, seat of a respected council family, Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
+The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannons, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear eyed resolve become the Republic’s quiet instruments. Their investigation carried out between market stalls, harbor steps, and hidden chapels uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
+
+Into this brightening storm sails Miho Lupina, a young officer whose sense of duty matches the city’s own. His arrival gives Iva a fragile counterweight to intrigue and the novel a tender pulse of human hope. When a public assembly invites citizens to share responsibility for Ragusa’s fate, Miho’s vow to serve becomes a turning point that binds private feeling to civic sacrifice. Through him, the book asks what a free city requires of those who love it: discreet service, restraint, and, when the hour comes, courage.
+
+Shadow over Ragusa braids mystery, romance, and civic drama into a portrait of a small republic standing tall among empires. Without revealing its final turns, the story carries Iva, Luka, and Miho from a single hidden crime toward revelations that test friendships, expose traitors, and clarify where faith, family, and freedom truly meet. Across stone alleys and sun-struck rooftops, the novel celebrates a city that survives by wit over force and the people whose private loyalties make public liberty possible.
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- HIGHLIGHTS -->
+<section id="highlights"><div class="container">
+  <h2>✨ What Makes This Book Exceptional</h2>
+  <div class="hl-grid">
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">🏛</span><div class="hl-title">A Unique Historical Setting</div></div>
+      <ul class="hl-list">
+        <li>A small but powerful maritime republic.</li>
+        <li>Diplomacy, trade, and survival between Venice and the Ottoman Empire.</li>
+        <li>Architecture, customs, salt trade, noble families.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">❤</span><div class="hl-title">A Love Story Built on Loyalty</div></div>
+      <ul class="hl-list">
+        <li>Pure and true, not forbidden or scandalous.</li>
+        <li>Tested by war, faith, distance, and politics.</li>
+        <li>A force that changes the destiny of their world.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">👩‍🦰</span><div class="hl-title">A Strong, Intelligent Female Lead</div></div>
+      <ul class="hl-list">
+        <li>Master of servants for Villa Marinowhitch.</li>
+        <li>Iva is brave, clever, principled, emotionally deep.</li>
+        <li>She takes action rather than waiting to be saved.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">⚔</span><div class="hl-title">Epic Stakes, Human Hearts</div></div>
+      <ul class="hl-list">
+        <li>Love and devotion amid political intrigue.</li>
+        <li>War, betrayal, faith, and survival.</li>
+        <li>Diplomacy instead of conquest.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">🌍</span><div class="hl-title">Coexistence and Cultural Respect</div></div>
+      <ul class="hl-list">
+        <li>East and West find understanding.</li>
+        <li>Conversion as sacrifice for peace, not loss of identity.</li>
+        <li>Love across culture and empire.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">🏰</span><div class="hl-title">Rich Worldbuilding & Atmosphere</div></div>
+      <ul class="hl-list">
+        <li>Stone streets, villas, palaces, and ports.</li>
+        <li>Constantinople’s courts and mosques.</li>
+        <li>Noble households and harbor life.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">🎭</span><div class="hl-title">Multiple Compelling Characters</div></div>
+      <ul class="hl-list">
+        <li>Luka and Lady Ana’s quiet romance.</li>
+        <li>Venetian spies disguised as priests.</li>
+        <li>Lords Ivano and Vjeko making hard decisions.</li>
+      </ul>
+    </div>
+
+    <div class="hl-card">
+      <div class="hl-head"><span class="hl-icon">🕊</span><div class="hl-title">Hope, Honor, and Legacy</div></div>
+      <ul class="hl-list">
+        <li>Peace over tragedy.</li>
+        <li>Independence preserved.</li>
+        <li>Love rewarded after sacrifice.</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ABOUT -->
+<section id="about"><div class="container">
+  <h2>About the Author</h2>
+  <div style="display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start;max-width:980px">
+    <div class="frame" style="width:260px;border-radius:18px;overflow:hidden">
+      <img id="authorPhoto" alt="Author photo"
+           style="display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:1/1">
+    </div>
+    <div class="card" id="authorBio" style="white-space:pre-wrap">
+Mijo Radalj (born October 29, 1986) is a Croatian writer whose path to storytelling began during seasonal work as a tourist bus driver along the Adriatic coast. Listening to local guides tell versions of history that never reached the official books, shaped by memory, rumor, and place, sparked his fascination with untold stories. Before moving to Ireland, those seasons gave him a front row seat to temperaments and relationships that later inspired characters.
+
+What started as a light, just-for fun idea grew into a full historical novel. Shadow over Ragusa is the result: a work born of lived experience and the spaces between history and myth. The world of the novel draws on Dubrovnik’s civic spirit and the private loyalties of families like the Marinowhitch, where service, restraint, and courage quietly protect a small republic between empires.
+    </div>
+  </div>
+</div></section>
+
+<!-- DEDICATION -->
+<section id="dedication"><div class="container">
+  <h2>Dedication</h2>
+  <div class="card" style="white-space:pre-wrap">
+To my late father. You warned me about my friends, and you were right. They are wild and crazy in the most beautiful ways one can imagine, but I do love them, and I’ve been in good hands all along. Let this book stand as proof of that, and of my love for you. Rest easy, my friend.
+  </div>
+</div></section>
+
+<!-- GALLERY -->
+<section id="gallery"><div class="container">
+  <h2>Gallery</h2>
+  <div class="card">
+    <p class="caption">Visual references and atmosphere</p>
+    <div id="thumbs" class="hl-grid"></div>
+  </div>
+
+  <div id="gallery-note" class="note-card">
+    <h3>Reader Notes</h3>
+    <div id="galleryNoteText" style="white-space:pre-wrap;">A short interpretive note on themes and historical atmosphere.
+
+This section offers a reader oriented overview of the novel’s focus:
+Political intrigue and diplomacy in a small maritime republic
+Loyalty, civic duty, and private love under pressure
+Cultural intersections across the Adriatic world</div>
+    <div class="muted">— Brief thematic note.</div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="container">
+  <h2>Contact</h2>
+  <div class="card">
+    <p style="margin:0 0 10px 0;">Email: <a href="mailto:mijo.radalj@gmail.com" style="color:var(--fg);">mijo.radalj@gmail.com</a></p>
+    <p style="margin:0 0 10px 0;">Website: <a href="https://shadowoverragusa.github.io/" style="color:var(--fg);">https://shadowoverragusa.github.io</a></p>
+    <p class="caption">For agents and rights enquiries please include QUERY in the subject line.</p>
+  </div>
+</div></section>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+    <div>© <span id="year"></span> Mijo Radalj</div>
+    <div>Built with ♥ — static site</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Simple loader with fallbacks
+function tryLoad(el, files){
+  let i=0; const base = location.origin + '/';
+  function next(){
+    if(i>=files.length){ return; }
+    el.onerror = ()=>{ i++; next(); };
+    el.src = base + files[i];
+  }
+  next();
+}
+// Covers
+tryLoad(document.getElementById('heroCover'), ['cover.jpg','cover.png','cover.jpg.png']);
+tryLoad(document.getElementById('synopsisCover'), ['cover.jpg','cover.png','cover.jpg.png']);
+// Author photo
+tryLoad(document.getElementById('authorPhoto'), ['author.jpg','author.png','author.jpg.png']);
+
+// Build gallery by probing gallery/1.jpg ... gallery/24.jpg (and png/jpeg)
+(function buildGallery(){
+  const thumbs = document.getElementById('thumbs');
+  if(!thumbs) return;
+  const guesses = [];
+  for(let i=1;i<=24;i++){
+    guesses.push(`gallery/${i}.jpg`, `gallery/${i}.png`, `gallery/${i}.jpeg`);
+  }
+  guesses.forEach(path=>{
+    const img = new Image();
+    img.loading = "lazy";
+    img.alt = "Gallery image";
+    img.style.width = "100%";
+    img.style.height = "220px";
+    img.style.objectFit = "cover";
+    img.onerror = () => { img.remove(); };
+    img.onload = () => {
+      const wrap = document.createElement('div');
+      wrap.className = 'hl-card';
+      wrap.appendChild(img);
+      thumbs.appendChild(wrap);
+    };
+    img.src = path;
+  });
+})();
+</script>
 </body>
 </html>
