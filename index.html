@@ -90,45 +90,29 @@
   .btn{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:10px 14px;border-radius:12px;cursor:pointer}
   .btn:hover{background:rgba(255,255,255,.04)}
 
-  /* Shiny gold letter style */
+  /* CLASSIC OLD-NOVEL DROP CAP (wraps real text on the right + under) */
   .dropcap{
+    float:left;
     font-family:"Playfair Display",serif;
     font-weight:700;
+
+    /* 3-line feel (tweak if you want slightly taller/shorter) */
+    font-size:5.35rem;
+    line-height:0.78;
+
+    /* spacing around the letter */
+    margin:0.06em 0.14em 0 0;
+
+    /* shiny gold */
     background:linear-gradient(180deg,#fff2b8 0%, #f1d77a 18%, #d4af37 55%, #a97c1f 100%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
+
     text-shadow:
       0 1px 0 rgba(255,255,255,.25),
       0 3px 10px rgba(0,0,0,.55),
       0 0 14px rgba(212,175,55,.25);
-  }
-
-  /* TWO-LINE “OLD ROMAN” INCIPIT LAYOUT */
-  .incipit{
-    display:inline-grid;
-    grid-template-columns:auto 1fr;
-    grid-template-rows:auto auto;
-    column-gap:10px;
-    row-gap:0px;
-    align-items:start;
-  }
-  .incipit .dropcap{
-    grid-row:1 / span 2;     /* C covers 2 lines */
-    font-size:4.9rem;        /* bigger */
-    line-height:0.92;        /* keeps it exactly 2-line */
-    margin:0;
-    display:block;
-  }
-  .incipit .line1{
-    grid-column:2;
-    grid-row:1;
-    line-height:1.12;
-  }
-  .incipit .line2{
-    grid-column:2;
-    grid-row:2;
-    line-height:1.12;
   }
 </style>
 </head>
@@ -168,7 +152,7 @@
     </div>
     <div class="card">
       <p id="synopsisText" style="white-space:pre-wrap; margin:0;">
-<span class="incipit"><span class="dropcap">C</span><span class="line1">enturies</span><span class="line2">ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls.</span></span> As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marinowhitch, seat of a respected council family, Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
+<span class="dropcap">C</span>enturies ago on the Adriatic, the Republic of Ragusa (Dubrovnik) survives through diplomacy, trade, and the vigilance of its walls. As Venetian pressure mounts from the west, a quieter danger creeps within. Inside Villa Marinowhitch, seat of a respected council family, Master of Keys Luka and the capable house steward Iva find themselves drawn into a web of secrets when a clandestine trip to Lokrum Island reveals a hidden launch, a golden chain, and a body concealed beneath broken boards. What begins as a troubling discovery becomes the first thread in a conspiracy stretching from monastery corridors to the council chamber itself.
 
 The city’s political heart beats to ritual and ceremony: the Church speaks, the Admiralty counts ships and cannons, and the Council seeks balance under Duke Orlando. Yet beneath the music of garden soirées and the elegance of lantern-lit dinners, loyalties are tested. Father Marko’s pious counsel arrives with its own shadows; letters from powerful men beyond the sea urge alliances that would bind Ragusa’s hands; and whispers of red-cloaked figures stir fear along the walls. Luka’s watchful patience and Iva’s fierce, clear eyed resolve become the Republic’s quiet instruments. Their investigation carried out between market stalls, harbor steps, and hidden chapels uncovers links between the church, foreign agents, and smugglers using the coves around Lokrum.
 
@@ -366,3 +350,5 @@ tryLoad(document.getElementById('authorPhoto'), ['author.jpg','author.png','auth
 </script>
 </body>
 </html>
+
+::contentReference[oaicite:0]{index=0}
