@@ -126,7 +126,7 @@
       <a href="#synopsis">Synopsis</a>
       <a href="#highlights">Highlights</a>
       <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
+      <a href="#Gallery (coming soon)">Gallery (coming soon)</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -266,17 +266,17 @@ To my late father. You warned me about my friends, and you were right. They are 
   </div>
 </div></section>
 
-<!-- GALLERY -->
-<section id="gallery"><div class="container">
-  <h2>Gallery</h2>
+<!-- Gallery (coming soon) -->
+<section id="Gallery (coming soon)"><div class="container">
+  <h2>Gallery (coming soon)</h2>
   <div class="card">
     <p class="caption">Visual references and atmosphere</p>
     <div id="thumbs" class="hl-grid"></div>
   </div>
 
-  <div id="gallery-note" class="note-card">
+  <div id="Gallery (coming soon)-note" class="note-card">
     <h3>Reader Notes (coming soon)</h3>
-    <div id="galleryNoteText" style="white-space:pre-wrap;">A short interpretive note on themes and historical atmosphere.
+    <div id="Gallery (coming soon)NoteText" style="white-space:pre-wrap;">A short interpretive note on themes and historical atmosphere.
 
 This section offers a reader focused overview of the novel’s focus:
 Political intrigue and diplomacy in a small maritime republic
@@ -322,18 +322,18 @@ tryLoad(document.getElementById('synopsisCover'), ['cover.jpg','cover.png','cove
 // Author photo
 tryLoad(document.getElementById('authorPhoto'), ['author.jpg','author.png','author.jpg.png']);
 
-// Build gallery by probing gallery/1.jpg ... gallery/24.jpg (and png/jpeg)
-(function buildGallery(){
+// Build Gallery (coming soon) by probing Gallery (coming soon)/1.jpg ... Gallery (coming soon)/24.jpg (and png/jpeg)
+(function buildGallery (coming soon)(){
   const thumbs = document.getElementById('thumbs');
   if(!thumbs) return;
   const guesses = [];
   for(let i=1;i<=24;i++){
-    guesses.push(`gallery/${i}.jpg`, `gallery/${i}.png`, `gallery/${i}.jpeg`);
+    guesses.push(`Gallery (coming soon)/${i}.jpg`, `Gallery (coming soon)/${i}.png`, `Gallery (coming soon)/${i}.jpeg`);
   }
   guesses.forEach(path=>{
     const img = new Image();
     img.loading = "lazy";
-    img.alt = "Gallery image";
+    img.alt = "Gallery (coming soon) image";
     img.style.width = "100%";
     img.style.height = "220px";
     img.style.objectFit = "cover";
