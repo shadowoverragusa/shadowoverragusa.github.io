@@ -47,8 +47,9 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 </div>
 </header>
 
+<!-- HERO -->
 <section id="hero" class="hero">
-<img src="/cover.jpg.png" alt="Cover">
+<img id="heroCover">
 <div class="veil"></div>
 <div class="content container">
 <h1>Shadow over Ragusa</h1>
@@ -57,6 +58,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 </div>
 </section>
 
+<!-- SYNOPSIS -->
 <section id="synopsis"><div class="container">
 <h2>Synopsis</h2>
 <div class="card">
@@ -64,13 +66,15 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 </div>
 </div></section>
 
+<!-- SAGA -->
 <section id="series"><div class="container">
 <h2>The Saga</h2>
 <div class="frame">
-<img src="/saga.jpg.png" alt="The Saga" class="series-image">
+<img src="/saga.jpg.png" class="series-image">
 </div>
 </div></section>
 
+<!-- CONTACT -->
 <section id="contact"><div class="container">
 <h2>Contact</h2>
 <div class="card">
@@ -81,6 +85,21 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 <footer>
 <div class="container">© 2026 Mijo Radalj</div>
 </footer>
+
+<script>
+function tryLoad(el, files){
+  let i=0;
+  function next(){
+    if(i>=files.length){ return; }
+    el.onerror = ()=>{ i++; next(); };
+    el.src = "/" + files[i];
+  }
+  next();
+}
+
+// 🔥 THIS FIXES YOUR OTHER IMAGES
+tryLoad(document.getElementById('heroCover'), ['cover.jpg.png','cover.png','cover.jpg']);
+</script>
 
 </body>
 </html>
