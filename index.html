@@ -49,7 +49,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 
 <!-- HERO -->
 <section id="hero" class="hero">
-<img id="heroCover">
+<img src="/cover.jpg.png" alt="Cover">
 <div class="veil"></div>
 <div class="content container">
 <h1>Shadow over Ragusa</h1>
@@ -70,7 +70,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 <section id="series"><div class="container">
 <h2>The Saga</h2>
 <div class="frame">
-<img src="/saga.jpg.png" class="series-image">
+<img src="/saga.jpg.png" alt="The Saga" class="series-image">
 </div>
 </div></section>
 
@@ -85,21 +85,6 @@ footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
 <footer>
 <div class="container">© 2026 Mijo Radalj</div>
 </footer>
-
-<script>
-function tryLoad(el, files){
-  let i=0;
-  function next(){
-    if(i>=files.length){ return; }
-    el.onerror = ()=>{ i++; next(); };
-    el.src = "/" + files[i];
-  }
-  next();
-}
-
-// 🔥 THIS FIXES YOUR OTHER IMAGES
-tryLoad(document.getElementById('heroCover'), ['cover.jpg.png','cover.png','cover.jpg']);
-</script>
 
 </body>
 </html>
