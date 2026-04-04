@@ -1,96 +1,444 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="description" content="The first part of an epic historical saga set in the Republic of Ragusa, where pure love blooms amid the shadows of war, and a hidden conspiracy threatens the small but powerful maritime republic."> 
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shadow over Ragusa — Mijo Radalj</title>
+  <meta
+    name="description"
+    content="Shadow over Ragusa by Mijo Radalj. Book I of an epic historical saga of intrigue, war, and love."
+  />
+  <style>
+    :root {
+      --bg: #0b1218;
+      --bg-soft: #101a22;
+      --panel: rgba(7, 12, 18, 0.82);
+      --text: #e9dfc8;
+      --muted: #c8b893;
+      --gold: #d6b35a;
+      --gold-soft: #b9923f;
+      --line: rgba(214, 179, 90, 0.28);
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+      --max: 1180px;
+    }
 
-<title>Shadow over Ragusa — Mijo Radalj</title>
+    * {
+      box-sizing: border-box;
+    }
 
-<link rel="icon" href="/cover.jpg.png"/>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@700&family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(5, 9, 14, 0.7), rgba(5, 9, 14, 0.86)),
+        radial-gradient(circle at top right, rgba(130, 150, 170, 0.14), transparent 28%),
+        radial-gradient(circle at top left, rgba(214, 179, 90, 0.08), transparent 24%),
+        var(--bg);
+      line-height: 1.75;
+    }
 
-<style>
-:root{--bg:#0b0d12;--fg:#f3f5f7;--muted:#a7afbd;--card:#121624;--card2:#151a28;--border:#262b36;--gold:#d7c18a}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui}
-.container{max-width:1120px;margin:0 auto;padding:0 16px}
-header{position:sticky;top:0;background:rgba(10,12,16,.4);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-header .row{display:flex;gap:12px;align-items:center;padding:10px 0}
-nav a{color:inherit;text-decoration:none;padding:10px}
-.hero{position:relative;min-height:460px;display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent)}
-.hero .content{position:relative;padding:30px 0}
-.hero h1{font-family:"Cinzel",serif;font-size:clamp(36px,6vw,78px);color:#c0c0c0}
-.book-kicker{color:var(--gold);font-size:14px;letter-spacing:2px}
-section{padding:52px 0}
-.card{background:var(--card);border-radius:18px;padding:22px}
-.frame{border-radius:18px;overflow:hidden}
-footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted)}
-.series-image{width:100%;height:auto;display:block}
-.dropcap{
-float:left;
-font-family:"Playfair Display",serif;
-font-weight:700;
-font-size:5.35rem;
-line-height:0.78;
-margin:0.06em 0.14em 0 0;
-}
-</style>
+    a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(8, 13, 18, 0.84);
+      border-bottom: 1px solid rgba(214, 179, 90, 0.12);
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .nav a {
+      color: var(--text);
+      opacity: 0.92;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--gold);
+      opacity: 1;
+    }
+
+    .hero {
+      padding: 56px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 390px 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .cover-card,
+    .panel,
+    .saga-card {
+      background: var(--panel);
+      border: 1px solid rgba(214, 179, 90, 0.14);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .cover-card {
+      overflow: hidden;
+    }
+
+    .cover-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-copy {
+      padding: 12px 0;
+    }
+
+    h1,
+    h2 {
+      margin: 0 0 14px;
+      line-height: 1.1;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      letter-spacing: 0.02em;
+      color: #f3e7ca;
+    }
+
+    h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      color: var(--gold);
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-size: 1.05rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      color: var(--text);
+      max-width: 760px;
+      margin-bottom: 18px;
+    }
+
+    .sublead {
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 1.03rem;
+    }
+
+    .section {
+      padding: 28px 0 42px;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .synopsis-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .synopsis-image {
+      position: sticky;
+      top: 92px;
+      align-self: start;
+    }
+
+    .synopsis-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(214, 179, 90, 0.16);
+    }
+
+    .synopsis-text p {
+      margin: 0 0 1.15rem;
+      color: var(--text);
+      font-size: 1.06rem;
+    }
+
+    .dropcap {
+      float: left;
+      color: var(--gold);
+      font-size: 4.8rem;
+      line-height: 0.84;
+      padding-right: 10px;
+      padding-top: 8px;
+      font-weight: 500;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      margin: 8px 0 24px;
+    }
+
+    .saga-card {
+      overflow: hidden;
+    }
+
+    .saga-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .contact-block {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-block a {
+      color: var(--gold);
+    }
+
+    .site-footer {
+      padding: 22px 0 42px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .synopsis-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .synopsis-image {
+        position: static;
+        max-width: 360px;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .nav-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        gap: 14px;
+      }
+
+      .dropcap {
+        font-size: 4rem;
+        padding-right: 8px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">Shadow over Ragusa</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#synopsis">Synopsis</a>
+        <a href="#saga">Saga</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-<div class="container row">
-<strong>Shadow over Ragusa</strong>
-<nav style="margin-left:auto">
-<a href="#hero">Home</a>
-<a href="#synopsis">Synopsis</a>
-<a href="#series">Saga</a>
-<a href="#contact">Contact</a>
-</nav>
-</div>
-</header>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="cover-card">
+          <img src="cover.jpg.png" alt="Shadow over Ragusa book cover" />
+        </div>
 
-<section id="hero" class="hero">
-<img src="/cover.jpg.png">
-<div class="veil"></div>
-<div class="content container">
-<h1>Shadow over Ragusa</h1>
-<div class="book-kicker">Book I of an Epic Saga</div>
-<p>The first part of an epic historical saga where pure love blooms amid the shadows of war</p>
-</div>
-</section>
+        <div class="hero-copy">
+          <div class="kicker">Book I of an Epic Saga</div>
+          <h1>Shadow over Ragusa</h1>
+          <p class="lead">
+            The first part of an epic historical saga where love, loyalty, and danger
+            unfold beneath the gathering shadow of war.
+          </p>
+          <p class="sublead">
+            Set in the Republic of Ragusa at the height of political tension, this
+            opening volume follows hidden plots, uneasy alliances, and lives drawn
+            into events larger than themselves.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<section id="synopsis"><div class="container">
-<h2>Synopsis</h2>
-<div class="card">
-<p style="white-space:pre-wrap; margin:0;">
-<span class="dropcap">C</span>enturies ago in the Mediterranean Adriatic Sea, the Republic of Ragusa achieved its peak. Independence was made through diplomacy, trade, and patriotism. As Venetian pressure rose in their dream to conquer Ragusa once again, so did the fleet of a new type of warships being built all over Italian ports. Villa Marinowitch, residence of respected noble council member, Lord Ivano, often held gatherings of his peers and their families, to wine and dine. On one such occasion in the Lord's library, a few lords of the council, and the Archbishop of Ragusa, held a discussion of current political events. Once it was over, Master of Keys Luka, former guardian of Ragusa, found a scroll dropped on the floor. Not by his intent, together with his friend Iva Lukich, he was drawn into a web of secrets. Following a mysterious scroll in search of a clue, a trip to Lokrum Island reveals a hidden launch, a golden chained rosary, and a naked body concealed beneath broken boards. The troubling discovery soon unravels into a deeper conspiracy. From the ruined monastery to the very heart of the council chamber, Ragusa’s political status moves from relieving Venetian pressure. With extra shipments of goods, the Church speaks in favour of the Venetian states as Lord Ivano develops doubts. The Admiralty counts ships and cannons, and the Council seeks balance under Duke Orlando. Yet beneath garden parties, lantern-lit dinners, tensions begin to rise. Father Marko, Archbishop of the Holy Church council, carries hidden intent. Messages from beyond the sea whisper orders to spies. Rumors of red-cloaked faces circle inside walls shrouded in mystery of what it is all about. The Pope himself and his ally, Duke of Venice, plan invasion as Luka’s patience and Iva’s courage lead them through markets, harbors, and shadowed paths as they uncover connections between clergy, foreign agents, and unseen forces. Into this gathering storm sails Miho Lupina, a young officer whose sense of duty mirrors the city’s wisdom and strength. His presence brings both hope and valor, as growing affection binds emotions to the fate of fair Iva Lukich since they saw each other for the first time. Suspicion deepens as danger closes in. Masters Luka and Iva converge in a struggle where loyalty, truth, and cunningness may determine the future of a Republic standing on the edge of uncertainty. Shadow over Ragusa blends mystery, romance, and political intrigue into the story of a small maritime republic caught between empires. Miho and Iva's pure love bloomes as it echoes all of all the way to the Sultan's court where impossible choice was placed upon their shoulders. This is the first title in a historical saga in which fictional characters live through events of which some actually happened in the republic that once stood proudly. The story continues with second title; Republic in the Mist ending with the last , Sunset of Liberty. 
-</p>
-</div>
-</div></section>
+    <section class="section" id="synopsis">
+      <div class="container">
+        <div class="panel">
+          <h2>Synopsis</h2>
+          <div class="divider"></div>
 
-<section id="series"><div class="container">
-<h2>The Saga</h2>
-<div class="frame">
-<img src="/saga.jpg.png" class="series-image">
-</div>
-</div></section>
+          <div class="synopsis-layout">
+            <div class="synopsis-image">
+              <img src="cover.jpg.png" alt="Shadow over Ragusa cover artwork" />
+            </div>
 
-<section id="contact"><div class="container">
-<h2>Contact</h2>
-<div class="card">
-<p>Email: mijo.radalj@gmail.com</p>
-</div>
-</div></section>
+            <div class="synopsis-text">
+              <p>
+                <span class="dropcap">C</span>enturies ago in the Mediterranean Adriatic Sea,
+                the Republic of Ragusa stood at the height of its power. Its independence
+                had been secured through diplomacy, trade, and patriotism. Yet as Venetian
+                ambition rose once more, and dreams of conquering Ragusa returned, a new
+                breed of warship began appearing across Italian ports.
+              </p>
 
-<footer>
-<div class="container">© 2026 Mijo Radalj</div>
-</footer>
+              <p>
+                Villa Marinowitch, the residence of the respected council noble Lord Ivano,
+                often welcomed gatherings of peers and their families for food, wine, and
+                conversation. During one such evening, several members of the council and
+                the Archbishop of Ragusa met in the Lord’s library to discuss the troubled
+                political climate. When the discussion ended, Luka, Master of Keys and
+                former guardian of Ragusa, discovered a scroll that had been left behind on
+                the floor. Without seeking it, he and his friend Iva Lukich found
+                themselves drawn into a web of secrecy.
+              </p>
 
+              <p>
+                Their search for answers leads them to Lokrum Island, where a hidden launch,
+                a gold-chained rosary, and a naked body concealed beneath broken boards turn
+                suspicion into dread. What begins as a troubling discovery soon opens onto a
+                deeper conspiracy, stretching from a ruined monastery to the very center of
+                government.
+              </p>
+
+              <p>
+                As new shipments fill the city and merchants prosper, the balance within
+                Ragusa begins to shift. The Church speaks more openly in favor of Venetian
+                interests, while Lord Ivano grows uneasy. The Admiralty counts ships and
+                cannons. The council struggles to preserve order under Duke Orlando. Beneath
+                elegant gatherings and lantern-lit evenings, tension quietly hardens.
+              </p>
+
+              <p>
+                Father Marko, Archbishop of the Holy Church council, carries motives of his
+                own. Messages travel across the sea to unseen agents. Rumors of red-cloaked
+                figures move through the city’s streets and stone corridors. Beyond the
+                walls, the Pope and his ally, the Duke of Venice, begin to shape plans for
+                invasion.
+              </p>
+
+              <p>
+                Luka’s patience and Iva’s courage carry them through markets, harbors, and
+                shadowed paths as they uncover ties between clergy, foreign operatives, and
+                hidden political designs. Into this rising storm comes Miho Lupina, a young
+                officer whose sense of duty reflects the strength and discipline of the city
+                he serves.
+              </p>
+
+              <p>
+                His arrival brings hope, but also new emotion. As danger closes in,
+                affection grows between Miho and Iva, binding private feeling to public
+                fate. Suspicion deepens. Loyalties are tested. Luka and Iva find themselves
+                at the center of a struggle in which truth, resolve, and cunning may decide
+                the future of a republic standing at the edge of uncertainty.
+              </p>
+
+              <p>
+                <em>Shadow over Ragusa</em> blends mystery, romance, and political intrigue
+                in the story of a small maritime republic caught between rival powers. As
+                the story unfolds, Miho and Iva are carried farther than either imagined,
+                all the way to the Sultan’s court, where an impossible choice awaits them.
+              </p>
+
+              <p>
+                This is the first title in a historical saga in which fictional characters
+                move through events inspired in part by the real history of the republic
+                that once stood proudly. The story continues in <em>Republic in the
+                Mist</em> and concludes in <em>Sunset of Liberty</em>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="saga">
+      <div class="container">
+        <div class="panel">
+          <h2>The Saga</h2>
+          <div class="divider"></div>
+          <div class="saga-card">
+            <img src="saga.jpg.png" alt="The Saga artwork showing the three books" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="panel">
+          <h2>Contact</h2>
+          <div class="divider"></div>
+          <div class="contact-block">
+            <div>Email: <a href="mailto:mijo.radalj@gmail.com">mijo.radalj@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 Mijo Radalj</div>
+  </footer>
 </body>
 </html>
