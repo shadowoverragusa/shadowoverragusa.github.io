@@ -39,7 +39,7 @@ header{
 header .row{
   display:flex;align-items:center;gap:12px;padding:10px 0;
 }
-nav{margin-left:auto}
+nav{margin-left:auto;display:flex;flex-wrap:wrap}
 nav a{color:inherit;text-decoration:none;padding:10px}
 
 .hero{
@@ -79,6 +79,13 @@ h2{font-family:"Cinzel",serif;margin-top:0}
   display:grid;
   grid-template-columns:320px 1fr;
   gap:24px;
+  align-items:start;
+}
+
+.left-stack{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 }
 
 .dropcap{
@@ -90,11 +97,22 @@ h2{font-family:"Cinzel",serif;margin-top:0}
   color:var(--gold);
 }
 
-.synopsis{white-space:pre-wrap;margin:0;line-height:1.8}
+.synopsis{
+  white-space:pre-wrap;
+  margin:0;
+  line-height:1.8;
+}
 
 .author-layout{
   display:grid;
   grid-template-columns:260px 1fr;
+  gap:24px;
+  align-items:start;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
   gap:24px;
 }
 
@@ -110,7 +128,7 @@ footer{
 }
 
 @media(max-width:900px){
-  .layout,.author-layout{grid-template-columns:1fr}
+  .layout,.author-layout,.gallery-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -124,12 +142,13 @@ footer{
 <a href="#hero">Home</a>
 <a href="#book">Book</a>
 <a href="#author">Author</a>
+<a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
 </nav>
 </div>
 </header>
 
-<!-- HERO (UNCHANGED) -->
+<!-- HERO -->
 <section id="hero" class="hero">
 <img src="./cover.jpg.png">
 <div class="veil"></div>
@@ -145,15 +164,10 @@ footer{
 <div class="container">
 <div class="layout">
 
-<!-- LEFT -->
-<div>
+<div class="left-stack">
 <div class="frame">
 <img src="./cover.jpg.png">
 </div>
-</div>
-
-<!-- RIGHT -->
-<div>
 
 <div class="card">
 <h2>About the Book</h2>
@@ -162,17 +176,15 @@ footer{
 <p>As rival empires close in, hidden conspiracies unfold beneath the surface of noble gatherings, religious influence, and maritime power.</p>
 <p>At its heart lies a story of courage, loyalty, and a love that grows amid uncertainty and danger.</p>
 </div>
+</div>
 
+<div>
 <div class="card">
 <h2>Synopsis</h2>
-<p class="synopsis"><span class="dropcap">C</span>enturies ago in the Mediterranean Adriatic Sea, the Republic of Ragusa reached its peak. Independence was maintained through diplomacy, trade, and patriotism. As Venetian pressure grew in their ambition to conquer Ragusa once again, so too did the fleet of a new type of warship being built across Italian ports.
-
-Villa Marinowitch, residence of respected noble council member Lord Ivano, often hosted gatherings of his peers and their families to wine and dine. On one such occasion in the lord’s library, several members of the council, along with the Archbishop of Ragusa, held a discussion on current political affairs. Once it was over, Master of Keys Luka, former guardian of Ragusa, found a scroll dropped on the floor. Not by his own intent, he and his friend Iva Lukich were drawn into a web of secrets.
-
-Following the mysterious scroll in search of a clue, a trip to Lokrum Island reveals a hidden launch, a golden chained rosary, and a naked body concealed beneath broken boards. The troubling discovery soon unravels into a deeper conspiracy. From the ruined monastery to the very heart of the council chamber, Ragusa’s political stability begins to shift under renewed Venetian pressure.</p>
+<p class="synopsis"><span class="dropcap">C</span>enturies ago in the Mediterranean Adriatic Sea, the Republic of Ragusa reached its peak. Independence was maintained through diplomacy, trade, and patriotism...</p>
+</div>
 </div>
 
-</div>
 </div>
 </div>
 </section>
@@ -189,9 +201,23 @@ Following the mysterious scroll in search of a clue, a trip to Lokrum Island rev
 <div class="card">
 <h2>Author Bio</h2>
 <p><strong>Mijo Radalj</strong> is the author of Shadow over Ragusa, a historical saga inspired by the heritage and political complexity of the Republic of Ragusa.</p>
-<p>His work blends fiction with historical atmosphere, bringing to life a world of diplomacy, intrigue, and maritime power.</p>
 </div>
 
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<div class="container">
+<h2>Gallery</h2>
+<div class="gallery-grid">
+<div class="frame">
+<img src="./cover.jpg.png">
+</div>
+<div class="frame">
+<img src="./saga.jpg.png">
+</div>
 </div>
 </div>
 </section>
