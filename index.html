@@ -95,27 +95,94 @@ const dotsEl=document.getElementById('dots');
 const audio=document.getElementById('audio');
 const playBtn=document.getElementById('playBtn');
 const trackLabel=document.getElementById('trackLabel');
-const year=document.getElementById('year'); year.textContent=new Date().getFullYear();
-let current=0; let timer=null; let musicStarted=false;
+const year=document.getElementById('year');
+year.textContent=new Date().getFullYear();
+
+let current=0;
+let musicIndex=0;
+let musicStarted=false;
+
 function safePath(path){return encodeURI(path)}
-slides.forEach((_,i)=>{const b=document.createElement('button');b.className='dot'+(i===0?' active':'');b.title='Slide '+(i+1);b.onclick=()=>go(i,true);dotsEl.appendChild(b)});
+
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.className='dot'+(i===0?' active':'');
+  b.title='Slide '+(i+1);
+  b.onclick=()=>showSlide(i);
+  dotsEl.appendChild(b);
+});
 const dots=[...document.querySelectorAll('.dot')];
-function setTrack(){const s=slides[current]; audio.src=safePath(s.dataset.track); trackLabel.textContent=`${s.dataset.title} — ${s.dataset.artist}`; if(musicStarted){audio.play().catch(()=>{});} }
-function go(i,manual=false){current=(i+slides.length)%slides.length; slides.forEach((s,n)=>s.classList.toggle('active',n===current)); dots.forEach((d,n)=>d.classList.toggle('active',n===current)); navButtons.forEach((b,n)=>b.classList.toggle('active',n===current)); setTrack(); if(manual) restartTimer();}
-function next(){go(current+1)} function prev(){go(current-1,true)}
-document.getElementById('next').onclick=()=>go(current+1,true); document.getElementById('prev').onclick=()=>go(current-1,true); navButtons.forEach(b=>b.onclick=()=>go(Number(b.dataset.go),true));
-function restartTimer(){clearInterval(timer); timer=setInterval(next,5000)} restartTimer(); setTrack();
-playBtn.onclick=async()=>{musicStarted=!musicStarted; if(musicStarted){try{await audio.play(); playBtn.textContent='⏸ Pause Music'}catch(e){musicStarted=false; playBtn.textContent='▶ Play Music'}} else {audio.pause(); playBtn.textContent='▶ Play Music'}};
-audio.addEventListener('ended',()=>{go(current+1,true); if(musicStarted) audio.play().catch(()=>{})});
+
+function updateVisualNav(){
+  slides.forEach((s,n)=>s.classList.toggle('active',n===current));
+  dots.forEach((d,n)=>d.classList.toggle('active',n===current));
+  navButtons.forEach((b,n)=>b.classList.toggle('active',n===current));
+}
+
+function showSlide(i){
+  current=(i+slides.length)%slides.length;
+  updateVisualNav();
+  // Manual slide changes do NOT change, restart, or stop the music.
+}
+
+function setMusicTrack(i){
+  musicIndex=(i+slides.length)%slides.length;
+  const s=slides[musicIndex];
+  audio.src=safePath(s.dataset.track);
+  trackLabel.textContent=`${s.dataset.title} — ${s.dataset.artist}`;
+}
+
+function advanceMusicAndSlide(){
+  musicIndex=(musicIndex+1)%slides.length;
+  current=musicIndex;
+  updateVisualNav();
+  setMusicTrack(musicIndex);
+  if(musicStarted){
+    audio.play().catch(()=>{});
+  }
+}
+
+function nextManual(){showSlide(current+1)}
+function prevManual(){showSlide(current-1)}
+
+document.getElementById('next').onclick=nextManual;
+document.getElementById('prev').onclick=prevManual;
+navButtons.forEach(b=>b.onclick=()=>showSlide(Number(b.dataset.go)));
+
+setMusicTrack(0);
+updateVisualNav();
+
+playBtn.onclick=async()=>{
+  musicStarted=!musicStarted;
+  if(musicStarted){
+    try{
+      await audio.play();
+      playBtn.textContent='⏸ Pause Music';
+    }catch(e){
+      musicStarted=false;
+      playBtn.textContent='▶ Play Music';
+    }
+  } else {
+    audio.pause();
+    playBtn.textContent='▶ Play Music';
+  }
+};
+
+audio.addEventListener('ended',advanceMusicAndSlide);
 
 async function loadGallery(){
-  const grid=document.getElementById('galleryGrid'); const status=document.getElementById('galleryStatus');
+  const grid=document.getElementById('galleryGrid');
+  const status=document.getElementById('galleryStatus');
   const api='https://api.github.com/repos/shadowoverragusa/shadowoverragusa.github.io/contents/gallery';
   try{
-    const res=await fetch(api,{cache:'no-store'}); if(!res.ok) throw new Error('Gallery API unavailable');
+    const res=await fetch(api,{cache:'no-store'});
+    if(!res.ok) throw new Error('Gallery API unavailable');
     const files=await res.json();
     const imgs=files.filter(f=>f.type==='file' && /\.(png|jpe?g|webp|gif)$/i.test(f.name));
-    if(!imgs.length){status.textContent='Add image files into the /gallery folder to show them here.'; return;}
+    if(!imgs.length){
+      status.textContent='Add image files into the /gallery folder to show them here.';
+      return;
+    }
     status.textContent=`${imgs.length} images`;
     grid.innerHTML=imgs.map(f=>`<a href="${f.download_url}" target="_blank" rel="noopener noreferrer"><img src="${f.download_url}" alt="${f.name}"></a>`).join('');
   }catch(e){
